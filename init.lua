@@ -1,36 +1,11 @@
 require "apps"
--- require "pomodoro"
 require "watcher"
+
 hs.window.animationDuration = 0
 hs.alert.show([[ Hammerspoon loaded ]], 2)
 
--- local myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", function(files)
---   hs.reload()
--- end):start()
-
 local hyper  = {"cmd", "alt", "ctrl"}
 local mover  = {"ctrl"}
-
--- hs.hotkey.bind(hyper, "return", function()
---   hs.application.launchOrFocus("Google Chrome")
---   -- hs.application.launchOrFocus("Safari")
--- end)
-
--- hs.hotkey.bind(hyper, "delete", function()
---   hs.application.launchOrFocus("iTerm")
--- end)
-
--- hs.hotkey.bind(hyper, "å", function()
---   hs.application.launchOrFocus("Sublime Text")
--- end)
-
--- hs.hotkey.bind(hyper, "i", function()
---   hs.application.launchOrFocus("IntelliJ IDEA")
--- end)
-
--- hs.hotkey.bind(hyper, ".", function()
---   hs.application.launchOrFocus("Slack")
--- end)
 
 local menuHeight  = hs.screen.allScreens()[1]:frame().y
 local lastFull    = 0
