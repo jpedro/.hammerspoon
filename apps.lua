@@ -1,4 +1,4 @@
-local hyper  = {"cmd", "alt", "ctrl"}
+local hyper = {"cmd", "alt", "ctrl"}
 
 hs.hotkey.bind(hyper, "return", function()
   hs.application.launchOrFocus("Google Chrome")
@@ -17,7 +17,7 @@ hs.hotkey.bind(hyper, ";", function()
 end)
 
 hs.hotkey.bind(hyper, "i", function()
-  hs.application.launchOrFocus("IntelliJ IDEA")
+  hs.application.launchOrFocus("IntelliJ IDEA CE")
 end)
 
 hs.hotkey.bind(hyper, ".", function()

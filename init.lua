@@ -1,5 +1,6 @@
 require "apps"
 require "watcher"
+require "mouse"
 
 hs.window.animationDuration = 0
 hs.alert.show([[ Hammerspoon loaded ]], 2)
@@ -19,6 +20,7 @@ local lastSextant = 0
 local lastForty   = 0
 local lastSixty   = 0
 local gap         = 1
+local gap2        = 25
 
 local points  = {}
 local sizes   = {}
@@ -75,15 +77,15 @@ function refresh(win)
     c = {
       x = mon.x + mon.w / 2 + gap,
       -- x = 0.5,
-      y = mon.y - menuHeight + mon.h / 2 + 25,
+      y = mon.y - menuHeight + mon.h / 2 + gap2,
     },
     d = {
       x = mon.x,
       -- x = 0,
-      y = mon.y - menuHeight + mon.h / 2 + 25,
+      y = mon.y - menuHeight + mon.h / 2 + gap2,
     },
     e = {
-      x = mon.x + mon.w / 3 + 5,
+      x = mon.x + mon.w / 3 + gap2,
       y = mon.y,
     },
     f = {
@@ -91,12 +93,12 @@ function refresh(win)
       y = mon.y,
     },
     g = {
-      x = mon.x + mon.w / 3 + 5,
-      y = mon.y - menuHeight + mon.h / 2 + 25,
+      x = mon.x + mon.w / 3 + gap2,
+      y = mon.y - menuHeight + mon.h / 2 + gap2,
     },
     h = {
       x = mon.x + mon.w / 3 * 2 + gap,
-      y = mon.y - menuHeight + mon.h / 2 + 25,
+      y = mon.y - menuHeight + mon.h / 2 + gap2,
     },
     m = {
       x = mon.x + mon.w / 6,
