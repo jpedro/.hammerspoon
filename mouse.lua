@@ -26,4 +26,4 @@ function mouseHighlight()
   end)
 end
 
-hs.hotkey.bind({"cmd"}, ".", mouseHighlight)
+hs.hotkey.bind({"cmd", "alt"}, ".", mouseHighlight)
