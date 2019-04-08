@@ -17,7 +17,7 @@ function mouseHighlight()
   mouseCircle = hs.drawing.circle(hs.geometry.rect(mousepoint.x - max, mousepoint.y - max, max * 2, max * 2))
   mouseCircle:setStrokeColor({["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1})
   mouseCircle:setFill(false)
-  mouseCircle:setStrokeWidth(280)
+  mouseCircle:setStrokeWidth(290)
   mouseCircle:show()
 
   -- Set a timer to delete the circle after 100ms
