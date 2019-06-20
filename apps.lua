@@ -23,3 +23,11 @@ end)
 hs.hotkey.bind(hyper, ".", function()
   hs.application.launchOrFocus("Slack")
 end)
+
+hs.hotkey.bind(hyper, "n", function()
+  hs.application.launchOrFocus("Notes")
+end)
+
+hs.hotkey.bind(hyper, "t", function()
+  hs.application.launchOrFocus("Trello")
+end)
