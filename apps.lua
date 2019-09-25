@@ -12,7 +12,7 @@ hs.hotkey.bind(hyper, "p", function()
   hs.application.launchOrFocus("Sublime Text")
 end)
 
-hs.hotkey.bind(hyper, ";", function()
+hs.hotkey.bind(hyper, ",", function()
   hs.application.launchOrFocus("Franz")
 end)
 
