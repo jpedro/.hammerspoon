@@ -28,8 +28,12 @@ hs.hotkey.bind(hyper, "n", function()
   hs.application.launchOrFocus("Notes")
 end)
 
-hs.hotkey.bind(hyper, "t", function()
-  hs.application.launchOrFocus("Trello")
+-- hs.hotkey.bind(hyper, "t", function()
+--   hs.application.launchOrFocus("Trello")
+-- end)
+
+hs.hotkey.bind(hyper, "1", function()
+  hs.application.launchOrFocus("1Password 7")
 end)
 
 -- hs.hotkey.bind(hyper, "s", function()
