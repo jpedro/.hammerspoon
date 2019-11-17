@@ -3,11 +3,12 @@ local mouseCircleTimer = nil
 
 function mouseHighlight()
   -- Delete an existing highlight if it exists
-  if mouseCircle then
+  if mouseCircle ~= nil then
     mouseCircle:delete()
     if mouseCircleTimer then
       mouseCircleTimer:stop()
     end
+    mouseCircle = nil
   end
 
   -- Get the current co-ordinates of the mouse pointer
@@ -23,6 +24,7 @@ function mouseHighlight()
   -- Set a timer to delete the circle after 100ms
   mouseCircleTimer = hs.timer.doAfter(0.3, function()
     mouseCircle:delete()
+    mouseCircle = nil
   end)
 end
 
