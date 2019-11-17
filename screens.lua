@@ -47,7 +47,7 @@ end)
 hs.hotkey.bind(hyper, "ø", function()
   local screens = hs.screen.allScreens()
   local style = hs.alert.defaultStyle
-  style.textSize = 120
+  -- style.textSize = 120
   -- style.fadeOutDuration = 1
   style.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
   style.strokeColor = {["alpha"]=0}
