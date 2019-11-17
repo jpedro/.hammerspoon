@@ -4,9 +4,13 @@ local mover  = {"ctrl"}
 local menuHeight  = hs.screen.allScreens()[1]:frame().y
 local lastFull    = 0
 local lastHalf    = 0
+local lastW40     = 0
 local lastWidth   = 0
 local lastThird   = 0
+local lastThird2  = 0
 local lastQuarter = 0
+local lastSextant = 0
+local lastForty   = 0
 local lastSixty   = 0
 local gap         = 1
 local gap2        = 25
@@ -53,6 +57,16 @@ function refresh(win)
       -- x = 0.5,
       y = mon.y,
     },
+    -- b40 = {
+    --   x = mon.x + mon.w * 0.45 + gap,
+    --   -- x = 0.5,
+    --   y = mon.y,
+    -- },
+    -- b60 = {
+    --   x = mon.x + mon.w * 0.55 + gap,
+    --   -- x = 0.5,
+    --   y = mon.y,
+    -- },
     c = {
       x = mon.x + mon.w / 2 + gap,
       -- x = 0.5,
@@ -93,9 +107,13 @@ function refresh(win)
       h = mon.h,
       w = mon.w,
     },
-    height = {
+    height1 = {
       h = mon.h,
       w = mon.w / 2 - gap ,
+    },
+    height2 = {
+      h = mon.h,
+      w = mon.w / 2 - gap,
     },
     quarter = {
       h = mon.h / 2 - gap + 2,
@@ -109,8 +127,33 @@ function refresh(win)
       h = mon.h,
       w = mon.w / 3 - gap,
     },
+    w40 = {
+      h = mon.h,
+      w = mon.w * 0.45 - gap,
+    },
+    w60 = {
+      h = mon.h,
+      w = mon.w * 0.55 - gap,
+    },
+    third2 = {
+      h = mon.h,
+      w = mon.w / 3 * 2 - gap,
+    },
+    center = {
+      h = mon.h / 3 * 2,
+      w = mon.w / 3 * 2,
+    },
+    sextant = {
+      h = mon.h / 2 - gap,
+      w = mon.w / 3 - gap,
+    },
+    forty = {
+      h = mon.h,
+      w = mon.w * 0.45 - gap,
+    },
     sixty = {
       h = mon.h,
+
       w = mon.w * 0.55 - gap,
     },
   }
@@ -134,7 +177,7 @@ hs.hotkey.bind(hyper, "left", function()
   local rect = win:frame()
   refresh(win)
 
-  rect = sizes.height
+  rect = sizes.height1
 
   if lastHalf == 0 then
     rect.x = points.a.x
@@ -144,7 +187,73 @@ hs.hotkey.bind(hyper, "left", function()
     rect.y = points.b.y
   end
 
+  -- hs.alert.show(rect.x)
+  -- rect = {x=0, y=0, h=1400, w=200}
+  -- hs.alert.show(rect)
+
   lastHalf = 1 - lastHalf
+  win:setFrame(rect)
+end)
+
+-- hs.hotkey.bind(hyper, "6", function()
+--   local win = hs.window.focusedWindow()
+--   if win == nil then
+--     return hs.alert.show("Select a window first.", 1)
+--   end
+
+--   local rect = win:frame()
+--   refresh(win)
+
+--   if lastW40 == 0 then
+--     rect = sizes.w40
+--     rect.x = points.a.x
+--     rect.y = points.a.y
+--   else
+--     rect = sizes.w60
+--     rect.x = points.b40.x
+--     rect.y = points.b40.y
+--   end
+
+--   -- hs.alert.show(rect.x)
+--   -- rect = {x=0, y=0, h=1400, w=200}
+--   -- hs.alert.show(rect)
+
+--   lastW40 = 1 - lastW40
+--   win:setFrame(rect)
+-- end)
+
+hs.hotkey.bind(hyper, "up", function()
+  local win = hs.window.focusedWindow()
+  if win == nil then
+    return hs.alert.show("Select a window first.", 1)
+  end
+
+  local rect = win:frame()
+  refresh(win)
+
+  if lastQuarter == 0 then
+    rect.x = points.a.x
+    rect.y = points.a.y
+  elseif lastQuarter == 1 then
+    rect.x = points.b.x
+    rect.y = points.b.y
+  elseif lastQuarter == 2 then
+    rect.x = points.c.x
+    rect.y = points.c.y
+  else
+    rect.x = points.d.x
+    rect.y = points.d.y
+  end
+
+  rect.w = sizes.quarter.w
+  rect.h = sizes.quarter.h
+
+  if lastQuarter == 3 then
+    lastQuarter = 0
+  else
+    lastQuarter = lastQuarter + 1
+  end
+
   win:setFrame(rect)
 end)
 
@@ -168,6 +277,35 @@ hs.hotkey.bind(hyper, "right", function()
   lastSixty = 1 - lastSixty
   win:moveToUnit(rect)
 end)
+
+-- hs.hotkey.bind(hyper, "right", function()
+--   local win = hs.window.focusedWindow()
+--   if win == nil then
+--     return hs.alert.show("Select a window first.", 1)
+--   end
+
+--   local rect = win:frame()
+--   refresh(win)
+
+--   if lastThird2 == 0 then
+--     rect.x = points.a.x
+--     rect.y = points.a.y
+--   else
+--     rect.x = points.e.x
+--     rect.y = points.e.y
+--   end
+
+--   rect.w = sizes.third2.w
+--   rect.h = sizes.third2.h
+
+--   if lastThird2 == 1 then
+--     lastThird2 = 0
+--   else
+--     lastThird2 = lastThird2 + 1
+--   end
+
+--   win:setFrame(rect)
+-- end)
 
 hs.hotkey.bind(hyper, "down", function()
   local win = hs.window.focusedWindow()
@@ -199,6 +337,36 @@ hs.hotkey.bind(hyper, "down", function()
   end
 
   win:setFrame(rect)
+
+  -- rect = sizes2.third
+
+  -- if lastThird == 0 then
+  --   rect.x = points2.a.x
+  --   rect.y = points2.a.y
+  -- elseif lastThird == 1 then
+  --   rect.x = points2.e.x
+  --   rect.y = points2.e.y
+  -- else
+  --   rect.x = points2.f.x
+  --   rect.y = points2.f.y
+  -- end
+
+  -- if lastThird2 == 0 then
+  --   rect.x = points2.a.x
+  --   rect.y = points2.a.y
+  -- else
+  --   rect.x = points2.e.x
+  --   rect.y = points2.e.y
+  -- end
+
+  -- if lastThird == 2 then
+  --   lastThird = 0
+  -- else
+  --   lastThird = lastThird + 1
+  -- end
+
+  -- hs.alert.show(rect)
+  -- win:moveToUnit(rect)
 end)
 
 hs.hotkey.bind(hyper, "-", function()
