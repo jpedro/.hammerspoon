@@ -39,7 +39,7 @@ function loop2()
   send2(1)
 end
 
-hs.hotkey.bind(hyper, "up", function()
+hs.hotkey.bind(hyper, "@", function()
   loop2()
 end)
 
