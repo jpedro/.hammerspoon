@@ -1,7 +1,7 @@
 require "apps"
 require "mouse"
 require "windows"
--- require "pomodoro"
+require "screens"
 
 hs.window.animationDuration = 0
 hs.alert.show([[  Hammerspoon loaded  ]], 2)

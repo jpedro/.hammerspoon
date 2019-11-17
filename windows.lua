@@ -1,5 +1,4 @@
 local hyper  = {"cmd", "alt", "ctrl"}
-local mover  = {"ctrl"}
 
 local menuHeight  = hs.screen.allScreens()[1]:frame().y
 local lastFull    = 0

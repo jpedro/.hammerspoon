@@ -27,11 +27,3 @@ end)
 hs.hotkey.bind(hyper, "n", function()
   hs.application.launchOrFocus("Notes")
 end)
-
--- hs.hotkey.bind(hyper, "t", function()
---   hs.application.launchOrFocus("Trello")
--- end)
-
--- hs.hotkey.bind(hyper, "s", function()
---   hs.application.launchOrFocus("Stremio")
--- end)
