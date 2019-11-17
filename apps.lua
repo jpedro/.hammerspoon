@@ -8,7 +8,7 @@ hs.hotkey.bind(hyper, "delete", function()
   hs.application.launchOrFocus("iTerm")
 end)
 
-hs.hotkey.bind(hyper, "@", function()
+hs.hotkey.bind(hyper, "j", function()
   hs.application.launchOrFocus("IntelliJ IDEA CE")
 end)
 
