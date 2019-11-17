@@ -61,12 +61,12 @@ local function pom_update_time()
   if (pom_time_left <= 0 ) then
     pom_disable()
     if pom_curr_active_type == "Work ☀" then
-      hs.alert.show(" Work Complete! ", 2)
+      hs.alert.show("  Work Complete!  ", 2)
       pom_work_count        =  pom_work_count + 1
       pom_curr_active_type  = "Rest"
       pom_time_left         = pom_rest_period_sec
     else
-        hs.alert.show(" Done resting ",2)
+        hs.alert.show("  Done resting  ",2)
         pom_curr_active_type  = "Work ☁"
         pom_time_left         = pom_work_period_sec
     end
@@ -91,7 +91,7 @@ function pom_enable()
     return
   end
   if pom_timer == nil then
-    hs.alert.show("Start working", 2)
+    hs.alert.show("  Start cracking  ", 2)
     pom_create_menu()
     pom_update_menu()
     pom_timer = hs.timer.new(1, pom_update_menu)
@@ -115,8 +115,8 @@ init = function()
     local mash = { "cmd", "ctrl", "alt" }
     -- pom_create_menu()
     -- pom_update_menu()
-    hs.hotkey.bind(mash, '9', function() pom_enable() end)
-    hs.hotkey.bind(mash, '0', function() pom_disable() end)
+    hs.hotkey.bind(mash, 'w', function() pom_enable() end)
+    hs.hotkey.bind(mash, 'r', function() pom_disable() end)
 end
 
 init()

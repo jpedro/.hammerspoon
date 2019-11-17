@@ -32,10 +32,6 @@ end)
 --   hs.application.launchOrFocus("Trello")
 -- end)
 
-hs.hotkey.bind(hyper, "1", function()
-  hs.application.launchOrFocus("1Password 7")
-end)
-
 -- hs.hotkey.bind(hyper, "s", function()
 --   hs.application.launchOrFocus("Stremio")
 -- end)
