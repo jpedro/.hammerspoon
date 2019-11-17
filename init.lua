@@ -1,7 +1,5 @@
--- require "watcher"
 require "apps"
 require "mouse"
-require "pomodoro"
 require "windows"
 -- require "pomodoro"
 
