@@ -27,3 +27,7 @@ end)
 hs.hotkey.bind(hyper, "n", function()
   hs.application.launchOrFocus("Notes")
 end)
+
+hs.hotkey.bind(hyper, "v", function()
+  hs.application.launchOrFocus("Visual Studio Code")
+end)
