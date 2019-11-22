@@ -46,32 +46,35 @@ end)
 
 hs.hotkey.bind(hyper, "ø", function()
   local screens = hs.screen.allScreens()
-  local style = hs.alert.defaultStyle
-  -- style.textSize = 120
-  -- style.fadeOutDuration = 1
-  style.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
-  style.strokeColor = {["alpha"]=0}
+  local defaultStyle = hs.alert.defaultStyle
+  local newStyle = hs.alert.defaultStyle
+  newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
+  newStyle.strokeColor = {["alpha"]=0}
 
   for k, v in pairs(screens) do
-    -- hs.alert.show("  Screen " .. k .. "  ", hs.alert.defaultStyle, screens[k], 5)
-    hs.alert.show("  Screen " .. k .. "  ", style, screens[k])
+    hs.alert.show("  Screen " .. k .. "  ", newStyle, screens[k])
   end
-  -- hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[2], nil, true)
-  -- local max = # all
-  -- last_screen = last_screen + 1
-  -- if last_screen > max then last_screen = 1 end
-  -- send2(window.focusedwindow(), last_screen)
-  -- alert.show("Sent to screen " .. last_screen, 2)
+
+  hs.alert.defaultStyle = defaultStyle
 end)
 
-hs.hotkey.bind(hyper, "f", function()
-  send2(1)
-end)
+-- hs.hotkey.bind(hyper, "å", function()
+--   hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[2], nil, true)
+--   local max = # all
+--   last_screen = last_screen + 1
+--   if last_screen > max then last_screen = 1 end
+--   send2(window.focusedwindow(), last_screen)
+--   alert.show("Sent to screen " .. last_screen, 2)
+-- end)
 
-hs.hotkey.bind(hyper, "g", function()
-  send2(2)
-end)
+-- hs.hotkey.bind(hyper, "f", function()
+--   send2(1)
+-- end)
 
-hs.hotkey.bind(hyper, "h", function()
-  send2(3)
-end)
+-- hs.hotkey.bind(hyper, "g", function()
+--   send2(2)
+-- end)
+
+-- hs.hotkey.bind(hyper, "h", function()
+--   send2(3)
+-- end)
