@@ -223,3 +223,38 @@ hs.hotkey.bind(hyper, "-", function()
   lastWidth = 1 - lastWidth
   win:setFrame(rect)
 end)
+
+hs.hotkey.bind(hyper, "up", function()
+  local win = hs.window.focusedWindow()
+  if win == nil then
+    return hs.alert.show("Select a window first.", 1)
+  end
+
+  local rect = win:frame()
+  refresh(win)
+
+  if lastQuarter == 0 then
+    rect.x = points.a.x
+    rect.y = points.a.y
+  elseif lastQuarter == 1 then
+    rect.x = points.b.x
+    rect.y = points.b.y
+  elseif lastQuarter == 2 then
+    rect.x = points.c.x
+    rect.y = points.c.y
+  else
+    rect.x = points.d.x
+    rect.y = points.d.y
+  end
+
+  rect.w = sizes.quarter.w
+  rect.h = sizes.quarter.h
+
+  if lastQuarter == 3 then
+    lastQuarter = 0
+  else
+    lastQuarter = lastQuarter + 1
+  end
+
+  win:setFrame(rect)
+end)
