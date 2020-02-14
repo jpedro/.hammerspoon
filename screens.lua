@@ -2,8 +2,8 @@ local hyper  = {"cmd", "alt", "ctrl"}
 local lastScreen = 0
 
 function send2(num)
-  hs.alert.show(" Send to screen " .. num .. " ")
   hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[num], nil, true)
+  hs.alert.show(" Sent to screen " .. num .. " ")
 end
 
 -- function len(t)
@@ -45,17 +45,19 @@ end)
 
 
 hs.hotkey.bind(hyper, "ø", function()
-  local screens = hs.screen.allScreens()
-  local defaultStyle = hs.alert.defaultStyle
-  local newStyle = hs.alert.defaultStyle
-  newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
-  newStyle.strokeColor = {["alpha"]=0}
+  local screens  = hs.screen.allScreens()
+  -- local defStyle = hs.alert.defaultStyle
+  -- local newStyle = hs.alert.defaultStyle
+  -- newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
+  -- newStyle.strokeColor = {["alpha"]=0}
+  -- newStyle.textSize = 120
+  -- newStyle.textColor = {["red"]=0,["blue"]=0,["green"]=0,["alpha"]=1}
 
   for k, v in pairs(screens) do
-    hs.alert.show("  Screen " .. k .. "  ", newStyle, screens[k])
+    hs.alert.show("  This is screen " .. k .. "  ", screens[k])
   end
 
-  hs.alert.defaultStyle = defaultStyle
+  -- hs.alert.defaultStyle = defStyle
 end)
 
 -- hs.hotkey.bind(hyper, "å", function()
