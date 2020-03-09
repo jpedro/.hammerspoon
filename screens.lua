@@ -39,12 +39,31 @@ function loop2()
   send2(1)
 end
 
-hs.hotkey.bind(hyper, "@", function()
+hs.hotkey.bind(hyper, "p", function()
   loop2()
 end)
 
+local brightnessCount = 0
+hs.hotkey.bind(hyper, "æ", function()
+  -- newBright = 0.5 * (brightnessCount % 3)
+  newBright = 0.34 + 0.33 * (brightnessCount % 3)
+  -- newBright = 1 - 0.33 * (lastBrightness % 3)
+  hs.screen.mainScreen():setBrightness(newBright)
+  brightnessCount = brightnessCount + 1
+  hs.alert.show("Brightness: " .. math.floor(newBright * 100) .. "%")
+end)
 
-hs.hotkey.bind(hyper, "ø", function()
+-- hs.hotkey.bind(hyper, "y", function()
+--   local cycles = hs.battery.cycles()
+--   local name = hs.battery.name()
+--   local cap = hs.battery.designCapacity()
+--   local health = hs.battery.health()
+--   local maxCapacity = hs.battery.maxCapacity()
+--   -- local healthCondition = hs.battery.healthCondition()
+--   hs.alert.show(cycles .. ", " .. cap .. ", " .. health .. ", " .. maxCapacity .. ", " .. name)
+-- end)
+
+hs.hotkey.bind(hyper, "y", function()
   local screens  = hs.screen.allScreens()
   -- local defStyle = hs.alert.defaultStyle
   -- local newStyle = hs.alert.defaultStyle
@@ -54,7 +73,9 @@ hs.hotkey.bind(hyper, "ø", function()
   -- newStyle.textColor = {["red"]=0,["blue"]=0,["green"]=0,["alpha"]=1}
 
   for k, v in pairs(screens) do
-    hs.alert.show("  This is screen " .. k .. "  ", screens[k])
+    bright = screens[k]:name() or "-"
+    message = "  Screen " .. k .. " (" .. bright .. ")  "
+    hs.alert.show(message, screens[k])
   end
 
   -- hs.alert.defaultStyle = defStyle
