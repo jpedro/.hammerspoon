@@ -39,7 +39,7 @@ function loop2()
   send2(1)
 end
 
-hs.hotkey.bind(hyper, "p", function()
+hs.hotkey.bind(hyper, "@", function()
   loop2()
 end)
 
@@ -81,13 +81,13 @@ hs.hotkey.bind(hyper, "y", function()
   -- hs.alert.defaultStyle = defStyle
 end)
 
--- hs.hotkey.bind(hyper, "å", function()
---   hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[2], nil, true)
---   local max = # all
---   last_screen = last_screen + 1
---   if last_screen > max then last_screen = 1 end
---   send2(window.focusedwindow(), last_screen)
---   alert.show("Sent to screen " .. last_screen, 2)
+-- hs.hotkey.bind(hyper, "@", function()
+--   -- hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[2], nil, true)
+--   -- local max = # all
+--   -- last_screen = last_screen + 1
+--   -- if last_screen > max then last_screen = 1 end
+--   -- send2(window.focusedwindow(), last_screen)
+--   alert.show("Sent to screen " .. "last_screen", 2)
 -- end)
 
 -- hs.hotkey.bind(hyper, "f", function()
