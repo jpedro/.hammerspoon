@@ -44,7 +44,7 @@ hs.hotkey.bind(hyper, "p", function()
 end)
 
 local brightnessCount = 0
-hs.hotkey.bind(hyper, "æ", function()
+hs.hotkey.bind(hyper, "u", function()
   -- newBright = 0.5 * (brightnessCount % 3)
   newBright = 0.34 + 0.33 * (brightnessCount % 3)
   -- newBright = 1 - 0.33 * (lastBrightness % 3)
