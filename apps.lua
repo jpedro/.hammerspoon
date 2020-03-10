@@ -12,7 +12,7 @@ hs.hotkey.bind(hyper, "i", function()
   hs.application.launchOrFocus("IntelliJ IDEA CE")
 end)
 
-hs.hotkey.bind(hyper, "å", function()
+hs.hotkey.bind(hyper, "p", function()
   hs.application.launchOrFocus("Sublime Text")
 end)
 
