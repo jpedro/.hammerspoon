@@ -15,7 +15,10 @@ hs.hotkey.bind(hyper, "i", function()
 end)
 
 hs.hotkey.bind(hyper, "p", function()
-  -- hs.application.launchOrFocus("Sublime Text")
+  hs.application.launchOrFocus("Sublime Text")
+end)
+
+hs.hotkey.bind(hyper, "p", function()
   hs.application.launchOrFocus("Visual Studio Code")
 end)
 
