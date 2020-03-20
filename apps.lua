@@ -1,8 +1,11 @@
 local hyper = {"cmd", "alt", "ctrl"}
 
 hs.hotkey.bind(hyper, "return", function()
-  -- hs.application.launchOrFocus("Google Chrome")
-  hs.application.launchOrFocus("Brave Browser")
+  hs.application.launchOrFocus("Google Chrome")
+end)
+
+hs.hotkey.bind(hyper, "b", function()
+  hs.application.launchOrFocus("Google Chrome")
 end)
 
 hs.hotkey.bind(hyper, "delete", function()
