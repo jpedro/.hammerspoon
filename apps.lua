@@ -6,8 +6,8 @@ hs.hotkey.bind(hyper, "return", function()
 end)
 
 hs.hotkey.bind(hyper, "delete", function()
-  -- hs.application.launchOrFocus("iTerm")
-  hs.application.launchOrFocus("Terminal")
+  hs.application.launchOrFocus("iTerm")
+  -- hs.application.launchOrFocus("Terminal")
 end)
 
 hs.hotkey.bind(hyper, "i", function()
