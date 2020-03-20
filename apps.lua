@@ -6,7 +6,8 @@ hs.hotkey.bind(hyper, "return", function()
 end)
 
 hs.hotkey.bind(hyper, "delete", function()
-  hs.application.launchOrFocus("iTerm")
+  -- hs.application.launchOrFocus("iTerm")
+  hs.application.launchOrFocus("Terminal")
 end)
 
 hs.hotkey.bind(hyper, "i", function()
@@ -14,7 +15,8 @@ hs.hotkey.bind(hyper, "i", function()
 end)
 
 hs.hotkey.bind(hyper, "p", function()
-  hs.application.launchOrFocus("Sublime Text")
+  -- hs.application.launchOrFocus("Sublime Text")
+  hs.application.launchOrFocus("Visual Studio Code")
 end)
 
 hs.hotkey.bind(hyper, ",", function()
