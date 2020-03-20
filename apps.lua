@@ -5,7 +5,7 @@ hs.hotkey.bind(hyper, "return", function()
 end)
 
 hs.hotkey.bind(hyper, "b", function()
-  hs.application.launchOrFocus("Google Chrome")
+  hs.application.launchOrFocus("Brave Browser")
 end)
 
 hs.hotkey.bind(hyper, "delete", function()
