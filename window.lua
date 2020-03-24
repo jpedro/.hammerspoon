@@ -1,5 +1,3 @@
-local hyper  = {"cmd", "alt", "ctrl"}
-
 local menuHeight  = hs.screen.allScreens()[1]:frame().y
 local lastFull    = 0
 local lastHalf    = 0
@@ -115,16 +113,25 @@ function refresh(win)
   }
 end
 
-hs.hotkey.bind(hyper, "space", function()
+-- hs.hotkey.bind(hyper, "space", function()
+--   local win = hs.window.focusedWindow()
+--   if win == nil then
+--     return hs.alert.show("Select a window first.", 1)
+--   end
+
+--   win:maximize()
+-- end)
+
+function windowMaximize()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
   end
 
   win:maximize()
-end)
+end
 
-hs.hotkey.bind(hyper, "left", function()
+function windowHalf()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
@@ -145,9 +152,9 @@ hs.hotkey.bind(hyper, "left", function()
 
   lastHalf = 1 - lastHalf
   win:setFrame(rect)
-end)
+end
 
-hs.hotkey.bind(hyper, "right", function()
+function windowTwoThirds()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
@@ -166,9 +173,9 @@ hs.hotkey.bind(hyper, "right", function()
 
   lastSixty = 1 - lastSixty
   win:moveToUnit(rect)
-end)
+end
 
-hs.hotkey.bind(hyper, "down", function()
+function windowOneThird()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
@@ -198,9 +205,9 @@ hs.hotkey.bind(hyper, "down", function()
   end
 
   win:setFrame(rect)
-end)
+end
 
-hs.hotkey.bind(hyper, "-", function()
+function windowHorizontally()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
@@ -222,9 +229,9 @@ hs.hotkey.bind(hyper, "-", function()
 
   lastWidth = 1 - lastWidth
   win:setFrame(rect)
-end)
+end
 
-hs.hotkey.bind(hyper, "up", function()
+function windowQuarter()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
@@ -257,4 +264,4 @@ hs.hotkey.bind(hyper, "up", function()
   end
 
   win:setFrame(rect)
-end)
+end

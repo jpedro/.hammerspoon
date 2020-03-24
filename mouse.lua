@@ -27,5 +27,3 @@ function mouseHighlight()
     mouseCircle = nil
   end)
 end
-
-hs.hotkey.bind({"alt"}, ".", mouseHighlight)
