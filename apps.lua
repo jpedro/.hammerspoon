@@ -8,11 +8,11 @@ hs.hotkey.bind(hyper, "delete", function()
   hs.application.launchOrFocus("iTerm")
 end)
 
-hs.hotkey.bind(hyper, "p", function()
+hs.hotkey.bind(hyper, "o", function()
   hs.application.launchOrFocus("Visual Studio Code")
 end)
 
-hs.hotkey.bind(hyper, "o", function()
+hs.hotkey.bind(hyper, "p", function()
   hs.application.launchOrFocus("Sublime Text")
 end)
 
