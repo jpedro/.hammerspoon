@@ -26,3 +26,7 @@ hs.hotkey.bind(hotkeyHyper, "right",  windowTwoThirds)
 hs.hotkey.bind(hotkeyHyper, "down",   windowOneThird)
 hs.hotkey.bind(hotkeyHyper, "up",     windowQuarter)
 hs.hotkey.bind(hotkeyHyper, "-",      windowHorizontally)
+
+hs.hotkey.bind("cmd", "¨", function()
+  mouseHighlight()
+end)
