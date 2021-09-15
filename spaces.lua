@@ -10,6 +10,8 @@ function MoveWindowToSpace(sp)
 end
 
 function moveWindowOneSpace(direction)
+  hs.alert.show([[  Moving window  ]], 1)
+
   local keyCode = direction == "left" and 123 or 124
 
   return hs.osascript.applescript([[
