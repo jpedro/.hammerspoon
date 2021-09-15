@@ -122,13 +122,47 @@ end
 --   win:maximize()
 -- end)
 
+local saved = {}
+
 function windowMaximize()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
   end
 
-  win:maximize()
+  function len(table)
+    local count = 0
+    for n in pairs(table) do
+      count = count + 1
+    end
+    return count
+  end
+
+  local id = win:id()
+  local last = saved[id]
+  if last == nil then
+    saved[id] = {}
+    saved[id]["rect"] = win:frame()
+    local rect = saved[id]["rect"]
+    print("==> Saved current window")
+    print("    rect.x " .. rect.x)
+    print("    rect.y " .. rect.y)
+    print("    rect.h " .. rect.h)
+    print("    rect.w " .. rect.w)
+    print("==> Saved: " .. len(saved) .. ".")
+    win:maximize()
+
+  else
+    local rect = last["rect"]
+    print("==> Found previous window")
+    print("    rect.x " .. rect.x)
+    print("    rect.y " .. rect.y)
+    print("    rect.h " .. rect.h)
+    print("    rect.w " .. rect.w)
+    win:setFrame(rect)
+    saved[id] = nil
+    print("==> Saved: " .. len(saved) .. ".")
+  end
 end
 
 function windowHalf()

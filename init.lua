@@ -6,4 +6,6 @@ require "screens"
 require "hotkeys"
 require "spaces"
 
-hs.alert.show([[  Hammerspoon loaded  ]], 1)
+
+local spaces = require("hs._asm.undocumented.spaces")
+hs.alert.show(" Hammerspoon loaded [" .. spaces.activeSpace() .. "]", 1)
