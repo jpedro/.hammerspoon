@@ -14,7 +14,7 @@ function moveSpace(num)
 
   spaces.moveWindowToSpace(win:id(), nextId)
   spaces.changeToSpace(nextId)
-  -- hs.alert.show(" Moved window to space " .. nextId .. ".", 3)
+  -- hs.alert.show("Window moved to space " .. nextId .. ".", 2)
   currentId = nextId
 end
 
