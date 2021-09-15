@@ -1,7 +1,7 @@
-require "apps"
 require "mouse"
 require "window"
 require "screens"
+require "hotkeys"
 
 defStyle = hs.alert.defaultStyle
 -- defStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=0.8}
@@ -16,17 +16,15 @@ local myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", func
   hs.reload()
 end):start()
 
-local hotkeyHyper  = {"cmd", "alt", "ctrl"}
-local hotkeyAlt  = {"alt"}
+-- local hyper = {"cmd", "alt", "ctrl"}
+-- local alt   = {"alt"}
 
-hs.hotkey.bind(hotkeyAlt,   ".",      mouseHighlight)
-hs.hotkey.bind(hotkeyHyper, "space",  windowMaximize)
-hs.hotkey.bind(hotkeyHyper, "left",   windowHalf)
-hs.hotkey.bind(hotkeyHyper, "right",  windowTwoThirds)
-hs.hotkey.bind(hotkeyHyper, "down",   windowOneThird)
-hs.hotkey.bind(hotkeyHyper, "up",     windowQuarter)
-hs.hotkey.bind(hotkeyHyper, "-",      windowHorizontally)
+-- hs.hotkey.bind(alt,   ".",      mouseHighlight)
+-- hs.hotkey.bind(hyper, "space",  windowMaximize)
+-- hs.hotkey.bind(hyper, "left",   windowHalf)
+-- hs.hotkey.bind(hyper, "right",  windowTwoThirds)
+-- hs.hotkey.bind(hyper, "down",   windowOneThird)
+-- hs.hotkey.bind(hyper, "up",     windowQuarter)
+-- hs.hotkey.bind(hyper, "-",      windowHorizontally)
 
-hs.hotkey.bind("cmd", "´", function()
-  mouseHighlight()
-end)
+-- hs.hotkey.bind("cmd", "´", mouseHighlight)

@@ -1,5 +1,16 @@
 local hyper = {"cmd", "alt", "ctrl"}
 
+hs.hotkey.bind("alt", ".",      mouseHighlight)
+hs.hotkey.bind("cmd", "´",      mouseHighlight)
+hs.hotkey.bind("cmd", "'",      mouseHighlight)
+hs.hotkey.bind(hyper, "space",  windowMaximize)
+hs.hotkey.bind(hyper, "left",   windowHalf)
+hs.hotkey.bind(hyper, "right",  windowTwoThirds)
+hs.hotkey.bind(hyper, "down",   windowOneThird)
+hs.hotkey.bind(hyper, "up",     windowQuarter)
+hs.hotkey.bind(hyper, "-",      windowHorizontally)
+
+
 hs.hotkey.bind(hyper, "return", function()
   hs.application.launchOrFocus("Google Chrome")
 end)
@@ -17,7 +28,6 @@ hs.hotkey.bind(hyper, "o", function()
 end)
 
 hs.hotkey.bind(hyper, "b", function()
-  -- hs.application.launchOrFocus("Sublime Text")
   hs.application.launchOrFocus("Brave Browser")
 end)
 
