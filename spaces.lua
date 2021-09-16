@@ -5,9 +5,20 @@ local currentId = spaces.activeSpace()
 
 -- window.animationDuration = 0.2
 
-function moveSpace(num)
+function nextSpace()
+  local currentId = spaces.activeSpace()
+  local nextId = nextId(currentId)
+  if nextId == nil then
+    return
+  end
+
+  spaces.changeToSpace(nextId)
+end
+
+function moveToSpace(num)
+  local currentId = spaces.activeSpace()
   local win = hs.window.focusedWindow()
-  local nextId = nextId()
+  local nextId = nextId(currentId)
   if nextId == nil then
     return
   end
@@ -18,7 +29,7 @@ function moveSpace(num)
   currentId = nextId
 end
 
-function nextId()
+function nextId(currentId)
   local win = hs.window.focusedWindow()
   local layout = spaces.layout()
   -- local uuid = win:screen():spacesUUID()
@@ -63,10 +74,10 @@ function moveWindowOneSpace(direction)
 end
 
 hs.hotkey.bind(extra, "left", function()
-  moveSpace()
+  nextSpace()
 end)
 hs.hotkey.bind(extra, "right", function()
-  moveSpace()
+  moveToSpace()
 end)
 -- hs.hotkey.bind(extra, "left", function() moveWindowOneSpace("left") end)
 -- hs.hotkey.bind(extra, "right", function() moveWindowOneSpace("right") end)
