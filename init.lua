@@ -3,6 +3,7 @@ require "style"
 require "mouse"
 require "window"
 require "screens"
+require "chrome"
 require "hotkeys"
 require "spaces"
 

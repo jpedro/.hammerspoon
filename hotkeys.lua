@@ -50,3 +50,15 @@ end)
 hs.hotkey.bind(hyper, "n", function()
   hs.application.launchOrFocus("Notes")
 end)
+
+hs.hotkey.bind(hyper, "1", function()
+  chromeProfile("Pedro")
+end)
+
+hs.hotkey.bind(hyper, "2", function()
+  chromeProfile("Pedro (Nordcloud)")
+end)
+
+hs.hotkey.bind(hyper, "3", function()
+  chromeProfile("Pedro (HM)")
+end)
