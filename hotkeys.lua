@@ -35,6 +35,10 @@ hs.hotkey.bind(hyper, ".", function()
   hs.application.launchOrFocus("Slack")
 end)
 
+hs.hotkey.bind(hyper, "t", function()
+  hs.application.launchOrFocus("Microsoft Teams")
+end)
+
 hs.hotkey.bind(hyper, ",", function()
   hs.application.launchOrFocus("Franz")
 end)
