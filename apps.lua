@@ -1,6 +1,10 @@
 local hyper = {"cmd", "alt", "ctrl"}
 
 hs.hotkey.bind(hyper, "return", function()
+  hs.application.launchOrFocus("Opera")
+end)
+
+hs.hotkey.bind(hyper, "o", function()
   hs.application.launchOrFocus("Google Chrome")
 end)
 
@@ -12,13 +16,21 @@ hs.hotkey.bind(hyper, "p", function()
   hs.application.launchOrFocus("Visual Studio Code")
 end)
 
-hs.hotkey.bind(hyper, "o", function()
-  hs.application.launchOrFocus("Opera")
+hs.hotkey.bind(hyper, "t", function()
+  hs.application.launchOrFocus("TablePlus")
 end)
+
+-- hs.hotkey.bind(hyper, "o", function()
+--   hs.application.launchOrFocus("Opera")
+-- end)
 
 hs.hotkey.bind(hyper, "b", function()
   -- hs.application.launchOrFocus("Sublime Text")
   hs.application.launchOrFocus("Brave Browser")
+end)
+
+hs.hotkey.bind(hyper, "m", function()
+  hs.application.launchOrFocus("Safari")
 end)
 
 hs.hotkey.bind(hyper, ".", function()
