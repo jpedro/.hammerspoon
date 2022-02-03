@@ -74,3 +74,4 @@ end)
 hs.hotkey.bind(hyper, "3", function()
   chromeProfile("Pedro (HM)")
 end)
+
