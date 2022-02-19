@@ -131,7 +131,9 @@ function windowMaximize()
   end
 
   win:maximize()
+end
 
+function trash()
   -- function len(table)
   --   local count = 0
   --   for n in pairs(table) do
