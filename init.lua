@@ -10,3 +10,4 @@ require "spaces"
 
 local spaces = require("hs._asm.undocumented.spaces")
 hs.alert.show("Hammerspoon loaded [Space " .. spaces.activeSpace() .. "]", 1)
+
