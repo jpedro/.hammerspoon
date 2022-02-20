@@ -1,9 +1,9 @@
 local hyper  = {"cmd", "alt", "ctrl"}
 local lastScreen = 0
 
-function send2(num)
-  hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[num], nil, true)
-  hs.alert.show(" Sent to screen " .. num .. " ")
+function send2(id)
+  hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[id], nil, true)
+  hs.alert.show("Sent to screen " .. id)
 end
 
 -- function len(t)
@@ -18,7 +18,7 @@ end
 
 function loop2()
   local screens = hs.screen.allScreens()
-  local curr = hs.window.focusedWindow():screen():id()
+  local current = hs.window.focusedWindow():screen():id()
   local found = false
   -- local first = nil
 
@@ -30,7 +30,7 @@ function loop2()
       return
     end
 
-    if id == curr then
+    if id == current then
       found = true
     end
     -- hs.alert.show(k .. ": " .. id, 10)
@@ -43,15 +43,15 @@ hs.hotkey.bind(hyper, "@", function()
   loop2()
 end)
 
-local brightnessCount = 0
-hs.hotkey.bind(hyper, "u", function()
-  -- newBright = 0.5 * (brightnessCount % 3)
-  newBright = 0.34 + 0.33 * (brightnessCount % 3)
-  -- newBright = 1 - 0.33 * (lastBrightness % 3)
-  hs.screen.mainScreen():setBrightness(newBright)
-  brightnessCount = brightnessCount + 1
-  hs.alert.show("Brightness: " .. math.floor(newBright * 100) .. "%")
-end)
+-- local brightnessCount = 0
+-- hs.hotkey.bind(hyper, "u", function()
+--   -- newBright = 0.5 * (brightnessCount % 3)
+--   newBright = 0.34 + 0.33 * (brightnessCount % 3)
+--   -- newBright = 1 - 0.33 * (lastBrightness % 3)
+--   hs.screen.mainScreen():setBrightness(newBright)
+--   brightnessCount = brightnessCount + 1
+--   hs.alert.show("Brightness: " .. math.floor(newBright * 100) .. "%")
+-- end)
 
 -- hs.hotkey.bind(hyper, "y", function()
 --   local cycles = hs.battery.cycles()
