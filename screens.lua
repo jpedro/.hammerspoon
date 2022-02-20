@@ -1,7 +1,6 @@
 function sendToScreen(id)
     hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[id], nil, true)
-    hs.alert.closeAll()
-    hs.alert.show("Sent to screen " .. id)
+    alert("Sent to screen " .. id)
 end
 
 function loopScreens()
@@ -16,7 +15,6 @@ function loopScreens()
             sendToScreen(k)
             return
         end
-
         if id == current then
             found = true
         end
@@ -25,18 +23,13 @@ function loopScreens()
 end
 
 function showScreens()
+    hs.alert.closeAll()
     local screens  = hs.screen.allScreens()
-    local defStyle = hs.alert.defaultStyle
-    local newStyle = hs.alert.defaultStyle
-    newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
-    newStyle.strokeColor = {["alpha"]=0}
-    newStyle.textSize = 60
-    newStyle.textColor = {["red"]=1,["blue"]=1,["green"]=1,["alpha"]=1}
-
-    for k, v in pairs(screens) do
-        local name = screens[k]:name() or "-"
-        message = "  Screen " .. k .. " (" .. name .. ")  "
-        hs.alert.show(message, screens[k])
+    for id, value in pairs(screens) do
+        local name = screens[id]:name() or "-"
+        local uuid = screens[id]:getUUID() or "-"
+        message = "  Screen " .. id .. ": " .. name -- .. "  " .. uuid
+        hs.alert.show(message, screens[id], 10)
+        hs.alert.show(uuid, screens[id], 20)
     end
-    hs.alert.defaultStyle = defStyle
 end

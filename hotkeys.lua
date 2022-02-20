@@ -15,13 +15,18 @@ hs.hotkey.bind(hyper, "@",      loopScreens)
 function toggleApp(name)
     focused = hs.window.focusedWindow()
     if focused then
-      app = focused:application()
-      if app:title() == name then
-        app:hide()
-        return
-      end
+        app = focused:application()
+        print("App name: " .. app:name())
+        print("App title: " .. app:title())
+        -- if app:title() == name then
+        if app:title():sub(1, #name) == name then
+            -- alert("Hidding " .. name)
+            app:hide()
+            return
+        end
     end
 
+    -- alert("Showing " .. name)
     hs.application.launchOrFocus(name)
 end
 
@@ -41,7 +46,7 @@ local extra = {"cmd", "shift"}
 -- hs.hotkey.bind(extra, "1", function() moveToSpace(1)            end)
 -- hs.hotkey.bind(extra, "2", function() moveToSpace(2)            end)
 -- hs.hotkey.bind(extra, "p", function() gotoSpace(2)              end)
-hs.hotkey.bind(extra, "n", function() gotoSpace(1)              end)
+hs.hotkey.bind(extra, "n", function() gotoSpace(358)            end)
 hs.hotkey.bind(extra, "0", function() gotoSpace(1036)           end)
 hs.hotkey.bind(extra, "å", function() showSpaces()              end)
 hs.hotkey.bind(extra, "ø", function() newSpace()                end)

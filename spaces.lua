@@ -1,31 +1,34 @@
 local spaces = require("hs._asm.undocumented.spaces")
 local currentId = spaces.activeSpace()
 
+
+hs.hotkey.bind({"cmd", "shift"}, "7",      function()
+    local text = spaces.debug.layout()
+    -- local text = spaces.types
+    -- local text = spaces.debug.spaceInfo(1)
+    print(text)
+end)
+
 function newSpace()
     local spaceId = spaces.createSpace()
-    hs.alert.show("Created space " .. spaceId)
+    alert("Created space " .. spaceId)
 end
 
 function gotoSpace(id)
     spaces.changeToSpace(id, false)
-    hs.alert.closeAll()
-    hs.alert.show("In space " .. spaces.activeSpace())
+    alert("In space " .. spaces.activeSpace())
 end
 
 function nextSpace()
-    -- print("----------------- NEXT SPACE")
     local currentId = spaces.activeSpace()
-    -- local nextId = nextId(currentId)
     local nextId = showSpaces()
     if nextId == 0 then
         return
     end
 
     print("--> spaces.changeToSpace: " .. nextId)
-    hs.alert.closeAll()
-    -- hs.alert.show("Go to space " .. nextId)
     spaces.changeToSpace(nextId, false)
-    hs.alert.show("In space " .. spaces.activeSpace())
+    alert("In space " .. spaces.activeSpace())
 end
 
 function moveToSpace(id)

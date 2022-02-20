@@ -35,7 +35,7 @@ local sizes2 = {
 local screens = hs.screen.allScreens()
 local watcher = hs.screen.watcher.new(function(x)
     print("Screen changed " .. x)
-    hs.alert.show("Screen changed")
+    alert("Screen changed")
     screens = hs.screen.allScreens()
 end)
 watcher:start()
@@ -134,7 +134,7 @@ local prevSizes = {}
 function windowMaximize()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return hs.alert.show("Select a window first.", 1)
+        return alert("Select a window first.", 1)
     end
 
     local windowsId = win:id()
@@ -222,7 +222,7 @@ end
 function windowHalf()
   local win = hs.window.focusedWindow()
   if win == nil then
-    return hs.alert.show("Select a window first.", 1)
+    return alert("Select a window first.", 1)
   end
 
   local rect = win:frame()
@@ -245,7 +245,7 @@ end
 function windowSixty()
   local win = hs.window.focusedWindow()
   if win == nil then
-    return hs.alert.show("Select a window first.", 1)
+    return alert("Select a window first.", 1)
   end
 
   local rect = win:frame()
@@ -266,7 +266,7 @@ end
 function windowThird()
   local win = hs.window.focusedWindow()
   if win == nil then
-    return hs.alert.show("Select a window first.", 1)
+    return alert("Select a window first.", 1)
   end
 
   local rect = win:frame()
@@ -298,7 +298,7 @@ end
 function windowHorizontally()
   local win = hs.window.focusedWindow()
   if win == nil then
-    return hs.alert.show("Select a window first.", 1)
+    return alert("Select a window first.", 1)
   end
 
   local rect = win:frame()
@@ -322,7 +322,7 @@ end
 function windowQuarter()
   local win = hs.window.focusedWindow()
   if win == nil then
-    return hs.alert.show("Select a window first.", 1)
+    return alert("Select a window first.", 1)
   end
 
   local rect = win:frame()
