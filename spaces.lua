@@ -55,7 +55,7 @@ function showSpaces()
     for id, screen in pairs(layout) do
         if id == screenId then
             print("-----------------")
-            -- print("==> Screen ID " .. id)
+            print("==> Screen ID " .. id)
             for key, val in pairs(screen) do
                 -- print("    (" .. key .. ": " .. val .. ")")
                 local mark = "   "
@@ -77,10 +77,10 @@ function showSpaces()
                 print(mark .. " Space " .. key .. ": " .. val)
             end
         else
-            -- print("... Skipped")
-            -- for key, val in pairs(screen) do
-            --     print("... Space " .. key .. ": " .. val)
-            -- end
+            print("... Skipped " .. screenId)
+            for key, val in pairs(screen) do
+                print("... Space " .. key .. ": " .. val)
+            end
         end
     end
 
