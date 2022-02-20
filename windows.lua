@@ -32,6 +32,14 @@ local sizes2 = {
   sixth   = {h = 0.50, w = 0.33},
 }
 
+local screens = hs.screen.allScreens()
+local watcher = hs.screen.watcher.new(function(x)
+    print("Screen changed " .. x)
+    hs.alert.show("Screen changed")
+    screens = hs.screen.allScreens()
+end)
+watcher:start()
+
 function refresh(win)
   local mon = win:screen():frame()
 
@@ -143,7 +151,7 @@ function windowMaximize()
             prevSizes[windowsId] = nil
             print("--- Remove windowsId " .. windowsId)
         else
-            print("-- No previous. Setting it at 10%/80%")
+            print("--- No previous. Setting it at 10%/80%")
             local newFrame = hs.geometry.copy(win:frame())
             newFrame.x = screenFrame.w * 0.1
             newFrame.y = screenFrame.h * 0.1
@@ -234,7 +242,7 @@ function windowHalf()
   win:setFrame(rect)
 end
 
-function windowTwoThirds()
+function windowSixty()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)
@@ -255,7 +263,7 @@ function windowTwoThirds()
   win:moveToUnit(rect)
 end
 
-function windowOneThird()
+function windowThird()
   local win = hs.window.focusedWindow()
   if win == nil then
     return hs.alert.show("Select a window first.", 1)

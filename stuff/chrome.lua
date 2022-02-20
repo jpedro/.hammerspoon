@@ -1,3 +1,7 @@
+-- hs.hotkey.bind(hyper, "1",      function() chromeProfile("Pedro")          end)
+-- hs.hotkey.bind(hyper, "2",      function() chromeProfile("Pedro (Nordcloud)")  end)
+-- hs.hotkey.bind(hyper, "3",      function() chromeProfile("Pedro (HM)")     end)
+
 local function startsWith(text, find)
   return text:sub(1, #find) == find
 end
