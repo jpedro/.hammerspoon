@@ -35,10 +35,6 @@ hs.hotkey.bind(hyper, "p", function()
     hs.application.launchOrFocus("Visual Studio Code")
 end)
 
-hs.hotkey.bind(hyper, "t", function()
-    hs.application.launchOrFocus("TablePlus")
-end)
-
 hs.hotkey.bind(hyper, "m", function()
     hs.application.launchOrFocus("Safari")
 end)
