@@ -1,8 +1,9 @@
 local hyper = {"cmd", "alt", "ctrl"}
 
+-- hs.hotkey.bind("cmd", "´",      mouseHighlight)
+-- hs.hotkey.bind("cmd", "'",      mouseHighlight)
+-- hs.hotkey.bind(hyper, "return", app("Google Chrome"))
 hs.hotkey.bind("alt", ".",      mouseHighlight)
-hs.hotkey.bind("cmd", "´",      mouseHighlight)
-hs.hotkey.bind("cmd", "'",      mouseHighlight)
 hs.hotkey.bind(hyper, "space",  windowMaximize)
 hs.hotkey.bind(hyper, "left",   windowHalf)
 hs.hotkey.bind(hyper, "right",  windowTwoThirds)
@@ -10,67 +11,66 @@ hs.hotkey.bind(hyper, "down",   windowOneThird)
 hs.hotkey.bind(hyper, "up",     windowQuarter)
 hs.hotkey.bind(hyper, "-",      windowHorizontally)
 
-
 hs.hotkey.bind(hyper, "return", function()
-  hs.application.launchOrFocus("Opera")
+    hs.application.launchOrFocus("Google Chrome")
 end)
 
 hs.hotkey.bind(hyper, "o", function()
-  hs.application.launchOrFocus("Google Chrome")
+    hs.application.launchOrFocus("Opera")
 end)
 
+hs.hotkey.bind(hyper, "b", function()
+    hs.application.launchOrFocus("Brave Browser")
+end)
+
+-- hs.hotkey.bind(hyper, "å", function()
+--     windowToggle()
+-- end)
+
 hs.hotkey.bind(hyper, "delete", function()
-  hs.application.launchOrFocus("iTerm")
+    hs.application.launchOrFocus("iTerm")
 end)
 
 hs.hotkey.bind(hyper, "p", function()
-  hs.application.launchOrFocus("Visual Studio Code")
+    hs.application.launchOrFocus("Visual Studio Code")
 end)
 
 hs.hotkey.bind(hyper, "t", function()
-  hs.application.launchOrFocus("TablePlus")
-end)
-
--- hs.hotkey.bind(hyper, "o", function()
---   hs.application.launchOrFocus("Opera")
--- end)
-
-hs.hotkey.bind(hyper, "b", function()
-  hs.application.launchOrFocus("Brave Browser")
+    hs.application.launchOrFocus("TablePlus")
 end)
 
 hs.hotkey.bind(hyper, "m", function()
-  hs.application.launchOrFocus("Safari")
+    hs.application.launchOrFocus("Safari")
 end)
 
 hs.hotkey.bind(hyper, ".", function()
-  hs.application.launchOrFocus("Slack")
+    hs.application.launchOrFocus("Slack")
 end)
 
 hs.hotkey.bind(hyper, "t", function()
-  hs.application.launchOrFocus("Microsoft Teams")
+    hs.application.launchOrFocus("Microsoft Teams")
 end)
 
 hs.hotkey.bind(hyper, ",", function()
-  hs.application.launchOrFocus("Franz")
+    hs.application.launchOrFocus("Franz")
 end)
 
 hs.hotkey.bind(hyper, "i", function()
-  hs.application.launchOrFocus("IntelliJ IDEA CE")
+    hs.application.launchOrFocus("IntelliJ IDEA CE")
 end)
 
 hs.hotkey.bind(hyper, "n", function()
-  hs.application.launchOrFocus("Notes")
+    hs.application.launchOrFocus("Notes")
 end)
 
 hs.hotkey.bind(hyper, "1", function()
-  chromeProfile("Pedro")
+    chromeProfile("Pedro")
 end)
 
 hs.hotkey.bind(hyper, "2", function()
-  chromeProfile("Pedro (Nordcloud)")
+    chromeProfile("Pedro (Nordcloud)")
 end)
 
 hs.hotkey.bind(hyper, "3", function()
-  chromeProfile("Pedro (HM)")
+    chromeProfile("Pedro (HM)")
 end)

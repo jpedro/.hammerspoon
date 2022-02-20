@@ -131,6 +131,26 @@ function windowMaximize()
   end
 
   win:maximize()
+end
+
+local prevSizes = {}
+function windowMaximize2()
+
+    local win = hs.window.focusedWindow()
+    if win == nil then
+        return hs.alert.show("Select a window first.", 1)
+    end
+
+    if prevSizes[win:id()] then
+        hs.alert.show("PREVIOUS EXISTS")
+        win:setFrame(prevSizes[win:id()])
+        prevSizes[win:id()] = nil
+    else
+        hs.alert.show("NO PREVIOUS")
+        local frame = curWin:frame()
+        prevSizes[win:id()] = hs.geometry.copy(frame)
+        win:maximize()
+    end
 
   -- function len(table)
   --   local count = 0

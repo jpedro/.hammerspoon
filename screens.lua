@@ -73,8 +73,8 @@ hs.hotkey.bind(hyper, "y", function()
   -- newStyle.textColor = {["red"]=0,["blue"]=0,["green"]=0,["alpha"]=1}
 
   for k, v in pairs(screens) do
-    bright = screens[k]:name() or "-"
-    message = "  Screen " .. k .. " (" .. bright .. ")  "
+    local name = screens[k]:name() or "-"
+    message = "  Screen " .. k .. " (" .. name .. ")  "
     hs.alert.show(message, screens[k])
   end
 
