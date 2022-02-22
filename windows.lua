@@ -131,27 +131,57 @@ end
 -- end)
 
 local prevSizes = {}
+local prevCount = 0
+
+function showLoaded()
+    local stored = nil
+    print("Windows stored:")
+    for k, v in pairs(prevSizes) do
+        stored = hs.window.get(k)
+        if stored then
+            print("- " .. k .. ": " .. v.x)
+        else
+            print("- " .. k .. ": NOT EXISTS")
+        end
+    end
+end
+
+function cleanLoaded()
+    local winId = 0
+    print("Cleaning stored windows...")
+    for k, v in pairs(prevSizes) do
+        stored = hs.window.get(k)
+        if stored then
+            print("- Exists " .. k)
+        else
+            prevSizes[k] = nil
+            print("- Gone " .. k)
+        end
+    end
+    print("Done")
+end
+
 function windowMaximize()
     local win = hs.window.focusedWindow()
     if win == nil then
         return alert("Select a window first.", 1)
     end
 
-    local windowsId = win:id()
-    local screen = win:screen()
+    local windowId    = win:id()
+    local screen      = win:screen()
     local screenFrame = screen:frame()
     local windowFrame = win:frame()
 
     if windowFrame == screenFrame then
         print("Frames are the same")
-        local prev = prevSizes[windowsId]
+        local prev = prevSizes[windowId]
         if prev then
-            print("--- Previous exists")
+            print("  Previous exists")
             win:setFrame(prev)
-            prevSizes[windowsId] = nil
-            print("--- Remove windowsId " .. windowsId)
+            prevSizes[windowId] = nil
+            print("  Removed windowId " .. windowId)
         else
-            print("--- No previous. Setting it at 10%/80%")
+            print("  No previous. Setting it at 10%/80%")
             local newFrame = hs.geometry.copy(win:frame())
             newFrame.x = screenFrame.w * 0.1
             newFrame.y = screenFrame.h * 0.1
@@ -161,8 +191,8 @@ function windowMaximize()
         end
     else
         print("Not the same frame")
-        prevSizes[windowsId] = hs.geometry.copy(win:frame())
-        print("--- Stored windowsId " .. windowsId)
+        prevSizes[windowId] = hs.geometry.copy(win:frame())
+        print("  Stored windowId " .. windowId)
         win:maximize()
     end
 end

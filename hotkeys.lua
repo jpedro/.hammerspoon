@@ -10,6 +10,8 @@ hs.hotkey.bind(hyper, "-",      windowHorizontally)
 hs.hotkey.bind(hyper, "y",      showScreens)
 hs.hotkey.bind(hyper, "h",      help)
 hs.hotkey.bind(hyper, "@",      loopScreens)
+hs.hotkey.bind(hyper, "x",      showLoaded)
+hs.hotkey.bind(hyper, "y",      cleanLoaded)
 
 
 function toggleApp(name)
