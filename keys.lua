@@ -1,4 +1,6 @@
 local hyper = {"cmd", "alt", "ctrl"}
+local extra = {"cmd", "shift"}
+local terms = {"cmd", "alt"}
 
 hs.hotkey.bind("alt", ".",      mouseHighlight)
 hs.hotkey.bind(hyper, "space",  windowMaximize)
@@ -32,8 +34,11 @@ function toggleApp(name)
     hs.application.launchOrFocus(name)
 end
 
+-- hs.hotkey.bind(hyper, "delete", function() toggleApp("iTerm")              end)
 hs.hotkey.bind(hyper, "return", function() toggleApp("Google Chrome")      end)
 hs.hotkey.bind(hyper, "delete", function() toggleApp("iTerm")              end)
+hs.hotkey.bind(terms, "delete", function() toggleApp("iTerm")              end)
+hs.hotkey.bind(hyper, "å",      function() toggleApp("iTerm")              end)
 hs.hotkey.bind(hyper, "o",      function() toggleApp("Opera")              end)
 hs.hotkey.bind(hyper, "b",      function() toggleApp("Brave Browser")      end)
 hs.hotkey.bind(hyper, "p",      function() toggleApp("Visual Studio Code") end)
@@ -44,7 +49,6 @@ hs.hotkey.bind(hyper, "i",      function() toggleApp("IntelliJ IDEA CE")   end)
 hs.hotkey.bind(hyper, "n",      function() toggleApp("Notes")              end)
 -- hs.hotkey.bind(hyper, "o", function() hs.application.launchOrFocus("Opera") end)
 
-local extra = {"cmd", "shift"}
 -- hs.hotkey.bind(extra, "1", function() moveToSpace(1)            end)
 -- hs.hotkey.bind(extra, "2", function() moveToSpace(2)            end)
 -- hs.hotkey.bind(extra, "p", function() gotoSpace(2)              end)

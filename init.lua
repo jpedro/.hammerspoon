@@ -4,8 +4,8 @@ require "mouse"
 require "windows"
 require "screens"
 -- require "chrome"
-require "spaces"
-require "hotkeys"
+-- require "spaces"
+require "keys"
 
 local newStyle = hs.alert.defaultStyle
 newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
