@@ -16,18 +16,18 @@ hs.hotkey.bind(hyper, "x",      showLoaded)
 hs.hotkey.bind(hyper, "y",      cleanLoaded)
 
 function toggleApp(name)
-    focused = hs.window.focusedWindow()
-    if focused then
-        app = focused:application()
-        print("App name: " .. app:name())
-        print("App title: " .. app:title())
-        -- if app:title() == name then
-        if app:title():sub(1, #name) == name then
-            -- alert("Hidding " .. name)
-            app:hide()
-            return
-        end
-    end
+    -- focused = hs.window.focusedWindow()
+    -- if focused then
+    --     app = focused:application()
+    --     print("App name: " .. app:name())
+    --     print("App title: " .. app:title())
+    --     -- if app:title() == name then
+    --     if app:title():sub(1, #name) == name then
+    --         -- alert("Hidding " .. name)
+    --         app:hide()
+    --         return
+    --     end
+    -- end
 
     -- alert("Showing " .. name)
     hs.application.launchOrFocus(name)
