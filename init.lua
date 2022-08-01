@@ -3,8 +3,9 @@ require "watch"
 require "mouse"
 require "windows"
 require "screens"
+require "catcher"
 -- require "chrome"
--- require "spaces"
+require "spaces"
 require "apps"
 
 local newStyle = hs.alert.defaultStyle
@@ -16,8 +17,8 @@ newStyle.textColor = {["red"]=1,["blue"]=1,["green"]=1,["alpha"]=1}
 newStyle.fadeInDuration = 0
 newStyle.fadeOutDuration = 0.5
 newStyle.radius = 30
-function alert(message)
 
+function alert(message)
     hs.alert.closeAll()
     return hs.alert.show(message)
 end
