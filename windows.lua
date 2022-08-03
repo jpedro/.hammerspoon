@@ -133,7 +133,7 @@ end
 local prevSizes = {}
 local prevCount = 0
 
-function showLoaded()
+function showStored()
     local stored = nil
     print("Windows stored:")
     for k, v in pairs(prevSizes) do

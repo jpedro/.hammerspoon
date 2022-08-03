@@ -2,80 +2,97 @@ local spaces = require("hs._asm.undocumented.spaces")
 local currentId = spaces.activeSpace()
 
 
-hs.hotkey.bind({"cmd", "shift"}, "7",      function()
+-- hs.hotkey.bind({"cmd", "shift"}, "7",      function()
+--     local text = spaces.debug.layout()
+--     -- local text = spaces.types
+--     -- local text = spaces.debug.spaceInfo(1)
+--     print(text)
+-- end)
+
+function showSpacesLayout()
     local text = spaces.debug.layout()
-    -- local text = spaces.types
-    -- local text = spaces.debug.spaceInfo(1)
     print(text)
-end)
+end
 
-hs.hotkey.bind({"cmd", "shift"}, "9", function()
-    local win = hs.window.focusedWindow()
-    spaces.moveWindowToSpace(win:id(), 1036)
-    alert("Move to space 1036")
-end)
+-- hs.hotkey.bind({"cmd", "shift"}, "9", function()
+--     local win = hs.window.focusedWindow()
+--     spaces.moveWindowToSpace(win:id(), 1036)
+--     alert("Move to space 1036")
+-- end)
 
-function newSpace()
+function createSpace()
     local spaceId = spaces.createSpace()
     alert("Created space " .. spaceId)
 end
 
-function gotoSpace(id)
-    spaces.changeToSpace(id, false)
-    alert("In space " .. spaces.activeSpace())
-end
+-- function gotoSpace(id)
+--     spaces.changeToSpace(id, false)
+--     alert("In space " .. spaces.activeSpace())
+-- end
 
 function nextSpace()
-    local currentId = spaces.activeSpace()
-    local nextId = showSpaces()
-    if nextId == 0 then
+    local thisID = spaces.activeSpace()
+    local nextID = showSpaces()
+    -- hs.alert.show("thisID " .. thisID .. " --> nextID " .. nextID)
+
+    if nextID == 0 then
         return
     end
 
-    print("--> spaces.changeToSpace: " .. nextId)
-    spaces.changeToSpace(nextId, false)
-    alert("In space " .. spaces.activeSpace())
+    print("--> spaces.nextSpace: " .. nextID)
+    local spacesIDArray = spaces.changeToSpace(nextID, false)
+    hs.alert.show("In space " .. spaces.activeSpace())
+    print("--> spacesIDArray:")
+    print(spacesIDArray)
 end
 
-function moveToSpace(id)
-    local spaceId = spaces.query()[id]
-    spaces.moveWindowToSpace(hs.window.focusedWindow():id(), spaceId)
-    spaces.changeToSpace(spaceId)
-end
+-- function moveToSpace(id)
+--     local spaceId = spaces.query()[id]
+--     spaces.moveWindowToSpace(hs.window.focusedWindow():id(), spaceId)
+--     spaces.changeToSpace(spaceId)
+-- end
 
 function showSpaces()
     local win = hs.window.focusedWindow()
-    local screenId  = win:screen():spacesUUID()
-    local currentId = spaces.activeSpace()
-    -- print("----------------- SHOW SPACES")
-    print("SCREEN: " .. screenId)
-    print("SPACE:  " .. currentId)
+    local screenID  = win:screen():spacesUUID()
+    local spaceID = spaces.activeSpace()
+
+    print("")
+    print("SCREEN: " .. screenID)
+    print("SPACE:  " .. spaceID)
     local found   = false
     local firstId = 0
     local nextId  = 0
     local layout  = spaces.layout()
     for id, screen in pairs(layout) do
-        if id == screenId then
-            -- print("-----------------")
-            print("==> Screen " .. id)
+        if id == screenID then
+            print("-----------------")
+            print("* Current screen " .. id)
+            print("  Spaces:")
             for key, val in pairs(screen) do
-                local mark = "   "
+                local mark = "     "
+
+                local first = " "
+                local current = " "
+                local next = " "
+
                 if firstId == 0 then
                     firstId = val
-                    mark = " F "
+                    first = "F"
                 end
                 if found and nextId == 0 then
                     nextId = val
-                    mark = " N "
+                    next = "N"
                 end
-                if val == currentId then
+                if val == spaceID then
                     found = true
-                    mark = ">>>"
+                    current = "C"
                 end
-                print(mark .. " Space " .. key .. ": " .. val)
+                print("  " .. key .. ". ".. first .. current .. next .. "  " .. val)
             end
         else
-            print("... Screen " .. screenId)
+            print("-----------------")
+            print("  Screen " .. id)
             for key, val in pairs(screen) do
                 print("    Space " .. key .. ": " .. val)
             end
@@ -87,10 +104,9 @@ function showSpaces()
         -- print("    Using firstId " .. nextId)
     end
 
-    print("-----------------")
-    print("REPORT")
-    print("    currentId: " .. currentId)
-    print("      firstId: " .. firstId)
-    print("       nextId: " .. nextId)
+    print("")
+    print("  CURRENT: " .. spaceID)
+    print("    FIRST: " .. firstId)
+    print("     NEXT: " .. nextId)
     return nextId
 end

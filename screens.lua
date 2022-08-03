@@ -29,7 +29,7 @@ function showScreens()
         local name = screens[id]:name() or "-"
         local uuid = screens[id]:getUUID() or "-"
         message = "  Screen " .. id .. ": " .. name -- .. "  " .. uuid
-        hs.alert.show(message, screens[id], 10)
-        hs.alert.show(uuid, screens[id], 20)
+        hs.alert.show(message, screens[id], 5)
+        hs.alert.show(uuid, screens[id], 5)
     end
 end

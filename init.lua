@@ -12,32 +12,21 @@ local newStyle = hs.alert.defaultStyle
 newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}
 newStyle.strokeColor = {["red"]=0,["blue"]=0,["green"]=0,["alpha"]=0.7}
 newStyle.strokeWidth = 10
-newStyle.textSize = 60
+newStyle.textSize = 40
 newStyle.textColor = {["red"]=1,["blue"]=1,["green"]=1,["alpha"]=1}
 newStyle.fadeInDuration = 0
 newStyle.fadeOutDuration = 0.5
 newStyle.radius = 30
+newStyle.textFont = "Menlo"
 
-function alert(message)
+function alert(message, delay)
     hs.alert.closeAll()
-    return hs.alert.show(message)
+    return hs.alert.show(message, delay)
 end
 
 
 local spaces = require("hs._asm.undocumented.spaces")
 alert("Hammerspoon loaded (Space " .. spaces.activeSpace() .. ")", 1)
-
-function help()
-    local text = [[
-Hyper                   ⌘⌥⌃ OK
-Grid                    Hyper-G
-Finder                  Hyper-F
-Tweetbot                Hyper-T
-Sublime Text            Hyper-E
-iTerm2                  Hyper-V
-]]
-    alert(text)
-end
 
 -- help()
 
