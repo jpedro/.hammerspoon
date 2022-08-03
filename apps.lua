@@ -1,6 +1,5 @@
 local hyper = {"cmd", "alt", "ctrl"}
 local shift = {"cmd", "shift"}
-local terms = {"cmd", "alt"}
 
 function showApp(name)
     hs.application.launchOrFocus(name)
@@ -20,8 +19,8 @@ This help               ⌃⌥⌘-H]]
     alert(text, 10)
 end
 
-hs.hotkey.bind({"ctrl"}, "<",   mouseHighlight)
-hs.hotkey.bind({"cmd"}, "'",    mouseHighlight)
+hs.hotkey.bind("cmd", "'",      mouseHighlight)
+hs.hotkey.bind("ctrl", "<",     mouseHighlight)
 hs.hotkey.bind("alt", ".",      mouseHighlight)
 
 hs.hotkey.bind(hyper, "space",  windowMaximize)
@@ -36,9 +35,11 @@ hs.hotkey.bind(hyper, "x",      showStored)
 hs.hotkey.bind(hyper, "h",      showHelp)
 hs.hotkey.bind(hyper, "r",      hs.reload)
 
-hs.hotkey.bind(hyper, "return", function() showApp("Google Chrome")         end)
-hs.hotkey.bind(hyper, "delete", function() showApp("iTerm")                 end)
+hs.hotkey.bind("cmd", "@",      function() showApp("iTerm")                 end)
 hs.hotkey.bind(hyper, "¨",      function() showApp("iTerm")                 end)
+hs.hotkey.bind(shift, "delete", function() showApp("iTerm")                 end)
+hs.hotkey.bind(hyper, "delete", function() showApp("iTerm")                 end)
+hs.hotkey.bind(hyper, "return", function() showApp("Google Chrome")         end)
 hs.hotkey.bind(hyper, "å",      function() showApp("iTerm")                 end)
 hs.hotkey.bind(hyper, "o",      function() showApp("Opera")                 end)
 hs.hotkey.bind(hyper, "b",      function() showApp("Tor Client")            end)
@@ -48,7 +49,23 @@ hs.hotkey.bind(hyper, "t",      function() showApp("Microsoft Teams")       end)
 hs.hotkey.bind(hyper, "i",      function() showApp("IntelliJ IDEA CE")      end)
 hs.hotkey.bind(hyper, "n",      function() showApp("Notes")                 end)
 
-hs.hotkey.bind(terms, "delete", function() showApp("iTerm")                 end)
+
+
+
+expose = hs.expose.new(nil, {
+    showThumbnails=false,
+    fitWindowsMaxIterations=20,
+    fitWindowsInBackground=false,
+    backgroundColor={0.5, 0.5, 0.5, 0.5},
+    otherSpacesStripWidth=0,
+    nonVisibleStripWidth=0,
+    showThumbnails=true
+})
+
+hs.hotkey.bind('cmd', "ø", function() expose:toggleShow()                   end)
+-- hs.hotkey.bind('cmd', "ø", 'ddd', function() expose:toggleShow()          end)
+-- hs.hotkey.bind('cmd','å','App Expose',function()expose_browsers:toggleShow()end)
+
 
 -- hs.hotkey.bind(hyper, "y",      cleanLoaded)
 -- hs.hotkey.bind(hyper, "m",      function() showApp("Safari")                end)
