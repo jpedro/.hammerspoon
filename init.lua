@@ -3,9 +3,9 @@ require "watch"
 require "mouse"
 require "windows"
 require "screens"
-require "catcher"
+-- require "catcher"
 -- require "chrome"
-require "spaces"
+-- require "spaces"
 require "apps"
 
 local newStyle = hs.alert.defaultStyle
@@ -25,5 +25,5 @@ function alert(message, delay)
 end
 
 
-local spaces = require("hs._asm.undocumented.spaces")
-alert("Hammerspoon loaded (Space " .. spaces.activeSpace() .. ")", 1)
+-- local spaces = require("hs._asm.undocumented.spaces")
+-- alert("Hammerspoon loaded (Space " .. spaces.activeSpace() .. ")", 1)
