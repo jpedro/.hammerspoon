@@ -134,20 +134,23 @@ local prevSizes = {}
 local prevCount = 0
 
 function showStored()
+    local text = "Windows stored:"
     local stored = nil
     print("Windows stored:")
     for k, v in pairs(prevSizes) do
         stored = hs.window.get(k)
         if stored then
+            text = text .. "- " .. k .. ": " .. v.x .. ": " .. stored:title()
             print("- " .. k .. ": " .. v.x)
         else
+            text = text .. "- " .. k .. ": NOT EXISTS"
             print("- " .. k .. ": NOT EXISTS")
         end
     end
+    alert(text)
 end
 
 function cleanLoaded()
-    local winId = 0
     print("Cleaning stored windows...")
     for k, v in pairs(prevSizes) do
         stored = hs.window.get(k)

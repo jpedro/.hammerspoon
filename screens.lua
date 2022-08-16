@@ -4,6 +4,9 @@ function sendToScreen(id)
 end
 
 function loopScreens()
+    local window = hs.window.focusedWindow()
+    -- hs.grid.pushWindowDown(window)
+    -- return
     local screens = hs.screen.allScreens()
     local current = hs.window.focusedWindow():screen():id()
     local found = false
@@ -24,12 +27,16 @@ end
 
 function showScreens()
     hs.alert.closeAll()
+    local brightness = hs.brightness.get()
+    if brightness then
+        hs.alert.show("Brightness" .. brightness, 20)
+    end
     local screens  = hs.screen.allScreens()
     for id, value in pairs(screens) do
         local name = screens[id]:name() or "-"
         local uuid = screens[id]:getUUID() or "-"
         message = "  Screen " .. id .. ": " .. name -- .. "  " .. uuid
-        hs.alert.show(message, screens[id], 5)
-        hs.alert.show(uuid, screens[id], 5)
+        hs.alert.show(message, screens[id], 20)
+        hs.alert.show(uuid, screens[id], 20)
     end
 end
