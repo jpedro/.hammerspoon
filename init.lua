@@ -7,6 +7,7 @@ require "screens"
 -- require "chrome"
 -- require "spaces"
 require "apps"
+require "caffeine"
 
 local newStyle = hs.alert.defaultStyle
 newStyle.fillColor = {["red"]=0,["blue"]=1,["green"]=0.6,["alpha"]=1}

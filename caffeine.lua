@@ -1,11 +1,22 @@
-
-
 local caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-    if state then
-        caffeine:setTitle("Awake")
+
+function setCaffeineDisplay(awake)
+    if awake then
+        caffeine:setTitle("Working")
+        -- caffeine:setTitle("△")
+        -- caffeine:setTitle("○")
+        -- caffeine:setTitle("⟁")
+        -- caffeine:setTitle("🕓")
+        -- caffeine:setTitle("⬤")
+        -- caffeine:setTitle("◼️")
     else
-        caffeine:setTitle("💤")
+        -- caffeine:setIcon("⬤")
+        caffeine:setTitle("You are not supposed to see this")
+        -- caffeine:setTitle("Hardly working")
+        -- caffeine:setTitle("●")
+        -- caffeine:setTitle("▼")
+        -- caffeine:setTitle("◯")
+        -- caffeine:setMenu({disabled = true, checked = true})
     end
 end
 
@@ -14,8 +25,11 @@ function caffeineClicked()
 end
 
 if caffeine then
+    hs.caffeinate.set("displayIdle", true)
     caffeine:setClickCallback(caffeineClicked)
+    -- hs.caffeinate.toggle("displayIdle")
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+    -- setCaffeineDisplay(true)
 end
 
 -- local caffeine = hs.menubar.new()
@@ -31,7 +45,7 @@ end
 --     setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 -- end
 
-if caffeine then
-    caffeine:setClickCallback(caffeineClicked)
-    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
-end
+-- if caffeine then
+--     caffeine:setClickCallback(caffeineClicked)
+--     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+-- end
