@@ -2,11 +2,20 @@ local caffeine = hs.menubar.new()
 local working  = {}
 local hardly   = {}
 
+function caffeineToggle()
+    local enabled = hs.caffeinate.get("displayIdle")
+    if enabled then
+        onCaffeineHardly()
+    else
+        onCaffeineWorking()
+    end
+    print("--> caffeine:enabled: " .. tostring(enabled))
+end
+
 function onCaffeineWorking()
     hs.caffeinate.set("displayIdle", true)
     print("--> onCaffeineWorking")
     caffeine:setTitle("Working hard  ●")
-    -- caffeine:setTitle("⬤")
     caffeine:setMenu(working)
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.ico")
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.icns")
