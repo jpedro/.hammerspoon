@@ -35,6 +35,7 @@ hs.hotkey.bind(hyper, "x",      showStored)
 hs.hotkey.bind(hyper, "+",      showHelp)
 hs.hotkey.bind(hyper, "k",      hs.alert.closeAll)
 hs.hotkey.bind(hyper, "r",      hs.reload)
+hs.hotkey.bind(hyper, "m",      caffeineFlip)
 
 -- hs.hotkey.bind(hyper, "¨",      function() showApp("iTerm")                 end)
 -- hs.hotkey.bind(shift, "delete", function() showApp("iTerm")                 end)
