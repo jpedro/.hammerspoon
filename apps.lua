@@ -38,25 +38,22 @@ hs.hotkey.bind(hyper, "r",      hs.reload)
 hs.hotkey.bind(hyper, "m",      caffeineFlip)
 hs.hotkey.bind(hyper, "j",      caffeineToggle)
 
--- hs.hotkey.bind(hyper, "¨",      function() showApp("iTerm")                 end)
+-- hs.hotkey.bind("cmd", "@",      function() showApp("iTerm")                 end)
 -- hs.hotkey.bind(shift, "delete", function() showApp("iTerm")                 end)
-hs.hotkey.bind("cmd", "@",      function() showApp("iTerm")                 end)
+-- hs.hotkey.bind(hyper, "delete", function() showApp("iTerm")                 end)
+-- hs.hotkey.bind(hyper, "å",      function() showApp("iTerm")                 end)
+-- hs.hotkey.bind(hyper, "¨",      function() showApp("iTerm")                 end)
 hs.hotkey.bind(hyper, "@",      function() showApp("iTerm")                 end)
-hs.hotkey.bind(hyper, "delete", function() showApp("iTerm")                 end)
 hs.hotkey.bind(hyper, "return", function() showApp("Google Chrome")         end)
-hs.hotkey.bind(hyper, "å",      function() showApp("iTerm")                 end)
-hs.hotkey.bind(hyper, "b",      function() showApp("Brave")                 end)
 hs.hotkey.bind(hyper, "p",      function() showApp("Visual Studio Code")    end)
 hs.hotkey.bind(hyper, ".",      function() showApp("Slack")                 end)
+hs.hotkey.bind(hyper, "b",      function() showApp("Brave")                 end)
 hs.hotkey.bind(hyper, "t",      function() showApp("Microsoft Teams")       end)
 hs.hotkey.bind(hyper, "i",      function() showApp("IntelliJ IDEA CE")      end)
 hs.hotkey.bind(hyper, "n",      function() showApp("Notes")                 end)
 hs.hotkey.bind(hyper, "h",      function() showApp("Hammerspoon")           end)
 -- hs.hotkey.bind(hyper, "o",      function() showApp("Opera")                 end)
 -- hs.hotkey.bind(hyper, "n",      function() showApp("Notes")                 end)
-
-
-
 
 -- expose = hs.expose.new(nil, {
 --     showThumbnails=false,

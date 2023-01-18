@@ -25,6 +25,7 @@ function onCaffeineWorking()
     -- -- local icon = hs.image.imageFromName(hs.image.systemImageNames["User"])
     -- -- icon:setSize(16)
     -- -- icon:setSize({h = 6, w = 6})
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/circle-8.png")
     -- caffeine:setIcon(icon)
     -- print(icon)
 
