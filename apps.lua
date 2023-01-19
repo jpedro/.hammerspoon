@@ -7,15 +7,16 @@ end
 
 function showHelp()
     local text = [[
-iTerm2                  ⌃⌥⌘-Delete
 Chrome                  ⌃⌥⌘-Enter
+iTerm2                  ⌃⌥⌘-@
 Code                    ⌃⌥⌘-P
 Slack                   ⌃⌥⌘-.
 Teams                   ⌃⌥⌘-T
 IntelliJ                ⌃⌥⌘-I
-Move to another screen  ⌃⌥⌘-@
+Move to another screen  ⌃⌥⌘-L
 Reload                  ⌃⌥⌘-R
-This help               ⌃⌥⌘-H]]
+Hammerpsoon             ⌃⌥⌘-H
+This help               ⌃⌥⌘-+]]
     alert(text, 10)
 end
 
