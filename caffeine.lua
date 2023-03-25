@@ -2,7 +2,7 @@ local caffeine = hs.menubar.new()
 local working  = {}
 local hardly   = {}
 
-function caffeineToggle()
+function caffeineWorkToggle()
     local enabled = hs.caffeinate.get("displayIdle")
     if enabled then
         onCaffeineHardly()
@@ -15,7 +15,7 @@ end
 function onCaffeineWorking()
     hs.caffeinate.set("displayIdle", true)
     print("--> onCaffeineWorking")
-    caffeine:setTitle("Working hard  ●")
+    caffeine:setTitle("●  Working hard")
     caffeine:setMenu(working)
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.ico")
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.icns")
@@ -37,7 +37,7 @@ function onCaffeineHardly()
     -- setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
     print("--> onCaffeineHardly")
     hs.caffeinate.set("displayIdle", false)
-    caffeine:setTitle("Hardly working  ◯")
+    caffeine:setTitle("◯  Hardly working")
     caffeine:setMenu(hardly)
 
     -- local icon = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
@@ -59,13 +59,18 @@ function caffeineHide()
     caffeine:removeFromMenuBar()
 end
 
+function caffeineQuit()
+    print("--> caffeineHide")
+    caffeine:delete()
+end
+
 function caffeineShow()
     print("--> caffeineShow")
     caffeine:returnToMenuBar()
     onCaffeineWorking()
 end
 
-function caffeineFlip()
+function caffeineMenuToggle()
     local visible = caffeine:isInMenuBar()
     print("--> caffeine:isInMenuBar: " .. tostring(visible))
     if visible then
@@ -82,12 +87,12 @@ end
 
 working = {
     {
-        title = "Working hard",
-        checked = true,
-        disabled = true
+        title = "●  Working hard",
+        -- checked = true,
+        disabled = true,
     },
     {
-        title = "Hardly working",
+        title = "◯  Hardly working",
         -- fn = onCaffeineWorking,
         fn = onCaffeineHardly,
     },
@@ -95,28 +100,42 @@ working = {
         title = "-"
     },
     {
-        title = "Close",
-        fn = caffeineHide
+        title = "Hide",
+        fn = caffeineHide,
+    },
+    {
+        title = "-",
+    },
+    {
+        title = "Quit",
+        fn = caffeineQuit,
     },
 }
 
 hardly = {
     {
-        title = "Working hard",
+        title = "● Working hard",
         fn = onCaffeineWorking,
         -- fn = onCaffeineHardly,
     },
     {
-        title = "Hardly working",
-        checked = true,
-        disabled = true
+        title = "◯ Hardly working",
+        -- checked = true,
+        disabled = true,
     },
     {
         title = "-"
     },
     {
-        title = "Close",
+        title = "Hide",
         fn = caffeineHide
+    },
+    {
+        title = "-"
+    },
+    {
+        title = "Quit",
+        fn = caffeineQuit
     },
 }
 
