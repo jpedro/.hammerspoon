@@ -2,22 +2,23 @@ local hyper = {"cmd", "alt", "ctrl"}
 local shift = {"cmd", "shift"}
 
 function showApp(name)
-    hs.application.launchOrFocus(name)
+    return function() hs.application.launchOrFocus(name) end
 end
 
 function showHelp()
     local text = [[
-Chrome                  ⌃⌥⌘-Enter
-iTerm2                  ⌃⌥⌘-@
-Code                    ⌃⌥⌘-P
-Slack                   ⌃⌥⌘-.
-Teams                   ⌃⌥⌘-T
-IntelliJ                ⌃⌥⌘-I
-Move to another screen  ⌃⌥⌘-L
-Reload                  ⌃⌥⌘-R
-Hammerpsoon             ⌃⌥⌘-H
-This help               ⌃⌥⌘-+]]
-    alert(text, 10)
+ Chrome                  ⌃⌥⌘ Enter
+ Slack                   ⌃⌥⌘ .
+ iTerm2                  ⌃⌥⌘ @
+ Code                    ⌃⌥⌘ P
+ IntelliJ                ⌃⌥⌘ I
+ Move to next screen     ⌃⌥⌘ L
+ Working hard            ⌃⌥⌘ J
+ Clear alerts            ⌃⌥⌘ K
+ Reload                  ⌃⌥⌘ R
+ Hammerpsoon             ⌃⌥⌘ H
+ This help               ⌃⌥⌘ +]]
+    alert(text, 20)
 end
 
 hs.hotkey.bind("cmd", "'",      mouseHighlight)
@@ -37,22 +38,23 @@ hs.hotkey.bind(hyper, "+",      showHelp)
 hs.hotkey.bind(hyper, "k",      hs.alert.closeAll)
 hs.hotkey.bind(hyper, "r",      hs.reload)
 hs.hotkey.bind(hyper, "m",      caffeineMenuToggle)
-hs.hotkey.bind(hyper, "w",      caffeineWorkToggle)
+hs.hotkey.bind(hyper, "j",      caffeineWorkToggle)
+
+hs.hotkey.bind(hyper, "return", showApp("Google Chrome"))
+hs.hotkey.bind(hyper, ".",      showApp("Slack"))
+hs.hotkey.bind(hyper, "@",      showApp("iTerm"))
+hs.hotkey.bind(hyper, "p",      showApp("Visual Studio Code"))
+hs.hotkey.bind(hyper, "å",      showApp("Brave Browser"))
+hs.hotkey.bind(hyper, "i",      showApp("IntelliJ IDEA CE"))
+hs.hotkey.bind(hyper, "n",      showApp("Notes"))
+hs.hotkey.bind(hyper, "h",      showApp("Hammerspoon"))
 
 -- hs.hotkey.bind("cmd", "@",      function() showApp("iTerm")                 end)
 -- hs.hotkey.bind(shift, "delete", function() showApp("iTerm")                 end)
 -- hs.hotkey.bind(hyper, "delete", function() showApp("iTerm")                 end)
 -- hs.hotkey.bind(hyper, "å",      function() showApp("iTerm")                 end)
 -- hs.hotkey.bind(hyper, "¨",      function() showApp("iTerm")                 end)
-hs.hotkey.bind(hyper, "@",      function() showApp("iTerm")                 end)
-hs.hotkey.bind(hyper, "return", function() showApp("Google Chrome")         end)
-hs.hotkey.bind(hyper, "p",      function() showApp("Visual Studio Code")    end)
-hs.hotkey.bind(hyper, ".",      function() showApp("Slack")                 end)
-hs.hotkey.bind(hyper, "b",      function() showApp("Brave Browser")         end)
-hs.hotkey.bind(hyper, "t",      function() showApp("Microsoft Teams")       end)
-hs.hotkey.bind(hyper, "i",      function() showApp("IntelliJ IDEA CE")      end)
-hs.hotkey.bind(hyper, "n",      function() showApp("Notes")                 end)
-hs.hotkey.bind(hyper, "h",      function() showApp("Hammerspoon")           end)
+-- hs.hotkey.bind(hyper, "t",      function() showApp("Microsoft Teams")       end)
 -- hs.hotkey.bind(hyper, "o",      function() showApp("Opera")                 end)
 -- hs.hotkey.bind(hyper, "n",      function() showApp("Notes")                 end)
 
@@ -96,6 +98,5 @@ hs.hotkey.bind(hyper, "h",      function() showApp("Hammerspoon")           end)
 --             return
 --         end
 --     end
-
 --     alert("Showing " .. name)
 -- end
