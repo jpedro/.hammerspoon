@@ -9,9 +9,10 @@ local currentId = spaces.activeSpace()
 --     print(text)
 -- end)
 
-function showSpacesLayout()
+function ShowSpacesLayout()
     local text = spaces.debug.layout()
     print(text)
+    print("currentId: " .. currentId)
 end
 
 -- hs.hotkey.bind({"cmd", "shift"}, "9", function()
@@ -20,7 +21,7 @@ end
 --     alert("Move to space 1036")
 -- end)
 
-function createSpace()
+function CreateSpace()
     local spaceId = spaces.createSpace()
     alert("Created space " .. spaceId)
 end
@@ -30,9 +31,9 @@ end
 --     alert("In space " .. spaces.activeSpace())
 -- end
 
-function nextSpace()
+function NextSpace()
     local thisID = spaces.activeSpace()
-    local nextID = showSpaces()
+    local nextID = ShowSpaces()
     -- hs.alert.show("thisID " .. thisID .. " --> nextID " .. nextID)
 
     if nextID == 0 then
@@ -44,6 +45,7 @@ function nextSpace()
     hs.alert.show("In space " .. spaces.activeSpace())
     print("--> spacesIDArray:")
     print(spacesIDArray)
+    print("--> thisID:" .. thisID)
 end
 
 -- function moveToSpace(id)
@@ -52,10 +54,10 @@ end
 --     spaces.changeToSpace(spaceId)
 -- end
 
-function showSpaces()
-    local win = hs.window.focusedWindow()
-    local screenID  = win:screen():spacesUUID()
-    local spaceID = spaces.activeSpace()
+function ShowSpaces()
+    local win      = hs.window.focusedWindow()
+    local screenID = win:screen():spacesUUID()
+    local spaceID  = spaces.activeSpace()
 
     print("")
     print("SCREEN: " .. screenID)
@@ -88,7 +90,7 @@ function showSpaces()
                     found = true
                     current = "C"
                 end
-                print("  " .. key .. ". ".. first .. current .. next .. "  " .. val)
+                print("  " .. key .. ". " .. first .. current .. next .. "  " .. val)
             end
         else
             print("-----------------")
