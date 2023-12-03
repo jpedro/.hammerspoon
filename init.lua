@@ -1,12 +1,19 @@
+require "settings"
+require "functions"
 require "watch"
-require "style"
 require "mouse"
-require "window"
+require "windows"
 require "screens"
-require "chrome"
-require "hotkeys"
-require "spaces"
+require "caffeine"
+-- require "catcher"
+-- require "chrome"
+-- require "spaces"
+require "apps"
+require "style"
+require "alert"
+
+CaffeineShow()
 
 
-local spaces = require("hs._asm.undocumented.spaces")
-hs.alert.show(" Hammerspoon loaded [" .. spaces.activeSpace() .. "]", 1)
+-- local spaces = require("hs._asm.undocumented.spaces")
+-- alert("Hammerspoon loaded (Space " .. spaces.activeSpace() .. ")", 1)

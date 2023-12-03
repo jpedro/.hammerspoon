@@ -1,37 +1,140 @@
-
-
 local caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-    if state then
-        caffeine:setTitle("Awake")
+local working  = {}
+local hardly   = {}
+
+function CaffeineWorkToggle()
+    local enabled = hs.caffeinate.get("displayIdle")
+    if enabled then
+        OnCaffeineHardly()
     else
-        caffeine:setTitle("💤")
+        OnCaffeineWorking()
+    end
+    print("--> caffeine:enabled: " .. tostring(enabled))
+end
+
+function OnCaffeineWorking()
+    hs.caffeinate.set("displayIdle", true)
+    print("--> onCaffeineWorking")
+    caffeine:setTitle("●  Working hard")
+    caffeine:setMenu(working)
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.ico")
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.icns")
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/green-2.png")
+    -- -- local icon = hs.image.imageFromName("User")
+    -- -- icon = hs.image.imageFromPath("/Applications/Hammerspoon.app/Contents/Resources/statusicon.pdf")
+    -- -- local icon = hs.image.imageFromName(hs.image.systemImageNames["User"])
+    -- -- icon:setSize(16)
+    -- -- icon:setSize({h = 6, w = 6})
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/circle-8.png")
+    -- caffeine:setIcon(icon)
+    -- print(icon)
+
+    local enabled = hs.caffeinate.get("displayIdle")
+    print("--> caffeine:enabled: " .. tostring(enabled))
+end
+
+function OnCaffeineHardly()
+    -- setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+    print("--> OnCaffeineHardly")
+    hs.caffeinate.set("displayIdle", false)
+    caffeine:setTitle("◯  Hardly working")
+    caffeine:setMenu(hardly)
+
+    -- local icon = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
+    -- icon = hs.image.imageFromPath("/Applications/Hammerspoon.app/Contents/Resources/statusicon.pdf")
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-red.ico")
+    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-red.icns")
+    -- local icon = hs.image.imageFromName("UserGuest")
+    -- local icon = hs.image.imageFromName(hs.image.systemImageNames["Network"])
+    -- icon:setSize({h = 12, w = 12})
+    -- caffeine:setIcon(icon)
+    -- print(icon)
+
+    local enabled = hs.caffeinate.get("displayIdle")
+    print("--> caffeine:enabled: " .. tostring(enabled))
+end
+
+function CaffeineHide()
+    print("--> caffeineHide")
+    caffeine:removeFromMenuBar()
+end
+
+function CaffeineQuit()
+    print("--> caffeineHide")
+    caffeine:delete()
+end
+
+function CaffeineShow()
+    print("--> caffeineShow")
+    caffeine:returnToMenuBar()
+    OnCaffeineWorking()
+end
+
+function CaffeineMenuToggle()
+    local visible = caffeine:isInMenuBar()
+    print("--> caffeine:isInMenuBar: " .. tostring(visible))
+    if visible then
+        -- print("    --> caffeineHide")
+        -- caffeine:removeFromMenuBar()
+        CaffeineHide()
+    else
+        CaffeineShow()
+        -- print("    --> caffeineShow")
+        -- caffeine:returnToMenuBar()
+        -- onCaffeineWorking()
     end
 end
 
-function caffeineClicked()
-    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
-end
+working = {
+    {
+        title = "●  Working hard",
+        -- checked = true,
+        disabled = true,
+    },
+    {
+        title = "◯  Hardly working",
+        -- fn = onCaffeineWorking,
+        fn = OnCaffeineHardly,
+    },
+    {
+        title = "-"
+    },
+    {
+        title = "Hide",
+        fn = CaffeineHide,
+    },
+    {
+        title = "-",
+    },
+    {
+        title = "Quit",
+        fn = CaffeineQuit,
+    },
+}
 
-if caffeine then
-    caffeine:setClickCallback(caffeineClicked)
-    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
-end
-
--- local caffeine = hs.menubar.new()
--- function setCaffeineDisplay(state)
---     if state then
---         caffeine:setTitle("💪")
---     else
---         caffeine:setTitle("💤")
---     end
--- end
-
--- function caffeineClicked()
---     setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
--- end
-
-if caffeine then
-    caffeine:setClickCallback(caffeineClicked)
-    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
-end
+hardly = {
+    {
+        title = "● Working hard",
+        fn = OnCaffeineWorking,
+        -- fn = onCaffeineHardly,
+    },
+    {
+        title = "◯ Hardly working",
+        -- checked = true,
+        disabled = true,
+    },
+    {
+        title = "-"
+    },
+    {
+        title = "Hide",
+        fn = CaffeineHide
+    },
+    {
+        title = "-"
+    },
+    {
+        title = "Quit",
+        fn = CaffeineQuit
+    },
+}

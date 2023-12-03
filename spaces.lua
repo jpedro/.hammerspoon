@@ -1,83 +1,114 @@
-local extra = {"ctrl", "alt"}
 local spaces = require("hs._asm.undocumented.spaces")
-
 local currentId = spaces.activeSpace()
 
--- window.animationDuration = 0.2
 
-function nextSpace()
-  local currentId = spaces.activeSpace()
-  local nextId = nextId(currentId)
-  if nextId == nil then
-    return
-  end
+-- hs.hotkey.bind({"cmd", "shift"}, "7",      function()
+--     local text = spaces.debug.layout()
+--     -- local text = spaces.types
+--     -- local text = spaces.debug.spaceInfo(1)
+--     print(text)
+-- end)
 
-  spaces.changeToSpace(nextId)
+function ShowSpacesLayout()
+    local text = spaces.debug.layout()
+    print(text)
+    print("currentId: " .. currentId)
 end
 
-function moveToSpace(num)
-  local currentId = spaces.activeSpace()
-  local win = hs.window.focusedWindow()
-  local nextId = nextId(currentId)
-  if nextId == nil then
-    return
-  end
+-- hs.hotkey.bind({"cmd", "shift"}, "9", function()
+--     local win = hs.window.focusedWindow()
+--     spaces.moveWindowToSpace(win:id(), 1036)
+--     alert("Move to space 1036")
+-- end)
 
-  spaces.moveWindowToSpace(win:id(), nextId)
-  spaces.changeToSpace(nextId)
-  print("==> Window moved to space " .. nextId .. ".")
-  currentId = nextId
+function CreateSpace()
+    local spaceId = spaces.createSpace()
+    alert("Created space " .. spaceId)
 end
 
-function nextId(currentId)
-  local win = hs.window.focusedWindow()
-  local layout = spaces.layout()
-  -- local uuid = win:screen():spacesUUID()
-  -- local spaceId = layout[uuid][num]
-  local firstId = 0
+-- function gotoSpace(id)
+--     spaces.changeToSpace(id, false)
+--     alert("In space " .. spaces.activeSpace())
+-- end
 
-  print("==> currentId " .. currentId)
-  for id, space in pairs(layout) do
-    local previousId = 0
-    for key, val in pairs(space) do
-      print("==> Key " .. key)
-      print("==> Val " .. val)
-      -- Save the first spaceId
-      if previousId == 0 then
-        firstId = val
-        print("==> Found firstID " .. firstId)
-      end
+function NextSpace()
+    local thisID = spaces.activeSpace()
+    local nextID = ShowSpaces()
+    -- hs.alert.show("thisID " .. thisID .. " --> nextID " .. nextID)
 
-      -- If the previous is the current, jump to this instead
-      if previousId == currentId then
-        print("==> Going to jump to " .. val)
-        return val
-      end
-      previousId = val
-      print("==> previousId is now " .. previousId)
+    if nextID == 0 then
+        return
     end
-  end
 
-  print("==> Using the firstId " .. firstId)
-  return firstId
+    print("--> spaces.nextSpace: " .. nextID)
+    local spacesIDArray = spaces.changeToSpace(nextID, false)
+    hs.alert.show("In space " .. spaces.activeSpace())
+    print("--> spacesIDArray:")
+    print(spacesIDArray)
+    print("--> thisID:" .. thisID)
 end
 
-function moveWindowOneSpace(direction)
-  local keyCode = direction == "left" and 123 or 124
-  hs.alert.show(" Moving window to " .. direction .. ".", 1)
+-- function moveToSpace(id)
+--     local spaceId = spaces.query()[id]
+--     spaces.moveWindowToSpace(hs.window.focusedWindow():id(), spaceId)
+--     spaces.changeToSpace(spaceId)
+-- end
 
-  return hs.osascript.applescript([[
-    tell application "System Events"
-      keystroke (key code ]] .. keyCode .. [[ using control down)
-    end tell
-  ]])
+function ShowSpaces()
+    local win      = hs.window.focusedWindow()
+    local screenID = win:screen():spacesUUID()
+    local spaceID  = spaces.activeSpace()
+
+    print("")
+    print("SCREEN: " .. screenID)
+    print("SPACE:  " .. spaceID)
+    local found   = false
+    local firstId = 0
+    local nextId  = 0
+    local layout  = spaces.layout()
+    for id, screen in pairs(layout) do
+        if id == screenID then
+            print("-----------------")
+            print("* Current screen " .. id)
+            print("  Spaces:")
+            for key, val in pairs(screen) do
+                local mark = "     "
+
+                local first = " "
+                local current = " "
+                local next = " "
+
+                if firstId == 0 then
+                    firstId = val
+                    first = "F"
+                end
+                if found and nextId == 0 then
+                    nextId = val
+                    next = "N"
+                end
+                if val == spaceID then
+                    found = true
+                    current = "C"
+                end
+                print("  " .. key .. ". " .. first .. current .. next .. "  " .. val)
+            end
+        else
+            print("-----------------")
+            print("  Screen " .. id)
+            for key, val in pairs(screen) do
+                print("    Space " .. key .. ": " .. val)
+            end
+        end
+    end
+
+    if nextId == 0 then
+        nextId = firstId
+        -- print("    Using firstId " .. nextId)
+    end
+
+    print("")
+    print("  CURRENT: " .. spaceID)
+    print("    FIRST: " .. firstId)
+    print("     NEXT: " .. nextId)
+    return nextId
 end
-
-hs.hotkey.bind(extra, "left", function()
-  nextSpace()
-end)
-hs.hotkey.bind(extra, "right", function()
-  moveToSpace()
-end)
--- hs.hotkey.bind(extra, "left", function() moveWindowOneSpace("left") end)
--- hs.hotkey.bind(extra, "right", function() moveWindowOneSpace("right") end)
