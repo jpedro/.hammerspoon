@@ -106,7 +106,7 @@ function Refresh(win)
         },
 
         s = {
-            x = screen.x + screen.w * 0.6 + gap,
+            x = screen.x + screen.w * 0.666 + gap,
             y = screen.y,
         },
 
@@ -143,11 +143,11 @@ function Refresh(win)
         },
         sixty = {
             h = screen.h,
-            w = screen.w * 0.6 - gap,
+            w = screen.w * 0.666 - gap,
         },
         forty = {
             h = screen.h,
-            w = screen.w * 0.4 - gap,
+            w = screen.w * 0.334 - gap,
         },
     }
 

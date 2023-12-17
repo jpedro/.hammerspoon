@@ -14,7 +14,7 @@ end
 
 function OnCaffeineWorking()
     hs.caffeinate.set("displayIdle", true)
-    print("--> onCaffeineWorking")
+    print("--> OnCaffeineWorking")
     caffeine:setTitle("●  Working hard")
     caffeine:setMenu(working)
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.ico")
@@ -60,40 +60,35 @@ function CaffeineHide()
 end
 
 function CaffeineQuit()
-    print("--> caffeineHide")
+    print("--> CaffeineHide")
     caffeine:delete()
 end
 
 function CaffeineShow()
-    print("--> caffeineShow")
+    print("--> CaffeineShow")
     caffeine:returnToMenuBar()
     OnCaffeineWorking()
 end
 
 function CaffeineMenuToggle()
     local visible = caffeine:isInMenuBar()
-    print("--> caffeine:isInMenuBar: " .. tostring(visible))
+    print("--> Caffeine:isInMenuBar: " .. tostring(visible))
     if visible then
-        -- print("    --> caffeineHide")
-        -- caffeine:removeFromMenuBar()
         CaffeineHide()
     else
         CaffeineShow()
-        -- print("    --> caffeineShow")
-        -- caffeine:returnToMenuBar()
-        -- onCaffeineWorking()
     end
 end
 
 working = {
     {
         title = "●  Working hard",
-        -- checked = true,
+        checked = true,
         disabled = true,
     },
     {
         title = "◯  Hardly working",
-        -- fn = onCaffeineWorking,
+        checked = false,
         fn = OnCaffeineHardly,
     },
     {
@@ -115,12 +110,12 @@ working = {
 hardly = {
     {
         title = "● Working hard",
+        checked = false,
         fn = OnCaffeineWorking,
-        -- fn = onCaffeineHardly,
     },
     {
         title = "◯ Hardly working",
-        -- checked = true,
+        checked = true,
         disabled = true,
     },
     {
