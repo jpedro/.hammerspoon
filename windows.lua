@@ -1,25 +1,22 @@
-local menuHeight   = hs.screen.allScreens()[1]:frame().y
--- local lastFull    = 0
+-- local menuHeight   = hs.screen.allScreens()[1]:frame().y
+-- local lastFull     = 0
 local lastHalf     = 0
 local lastHozintal = 0
 local lastThird    = 0
 local lastQuarter  = 0
 local lastSixty    = 0
 local gap          = 1
--- local gap2         = 25
-
 local points       = {}
 local sizes        = {}
+local prevSizes    = {}
 
 -- local points2 = {
 --   a = {x = 0.00, y = 0.00},
 --   b = {x = 0.50, y = 0.00},
 --   c = {x = 0.50, y = 0.50},
 --   d = {x = 0.00, y = 0.50},
-
 --   e = {x = 0.33, y = 0.00},
 --   f = {x = 0.66, y = 0.00},
-
 --   g = {x = 0.33, y = 0.00},
 --   h = {x = 0.66, y = 0.00},
 -- }
@@ -87,7 +84,8 @@ function Refresh(win)
 
         -- 2nd third + origin
         f = {
-            x = screen.x + screen.w / 3 * 2 + gap,
+            -- x = screen.x + screen.w / 3 * 2 + gap,
+            x = screen.x + screen.w * 0.35 + gap,
             y = screen.y,
         },
 
@@ -106,7 +104,8 @@ function Refresh(win)
         },
 
         s = {
-            x = screen.x + screen.w * 0.666 + gap,
+            -- x = screen.x + screen.w * 0.666666 + gap,
+            x = screen.x + screen.w * 0.65 + gap,
             y = screen.y,
         },
 
@@ -143,11 +142,13 @@ function Refresh(win)
         },
         sixty = {
             h = screen.h,
-            w = screen.w * 0.666 - gap,
+            -- w = screen.w * 0.666666 - gap,
+            w = screen.w * 0.65 - gap,
         },
         forty = {
             h = screen.h,
-            w = screen.w * 0.334 - gap,
+            -- w = screen.w * 0.333333 - gap,
+            w = screen.w * 0.35 - gap,
         },
     }
 
@@ -158,9 +159,6 @@ function Refresh(win)
     print("Points for screen:")
     PrintTable(points, 0)
 end
-
-local prevSizes = {}
--- local prevCount = 0
 
 function ShowStored()
     local text = "Windows stored:"

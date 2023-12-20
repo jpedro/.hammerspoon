@@ -9,17 +9,17 @@ end
 
 function ShowHelp()
     local text = [[
- Chrome                  ⌃⌥⌘ Enter
- Slack                   ⌃⌥⌘ .
- iTerm2                  ⌃⌥⌘ @
- Code                    ⌃⌥⌘ P
- IntelliJ                ⌃⌥⌘ I
- Move to next screen     ⌃⌥⌘ L
- Working hard            ⌃⌥⌘ J
- Clear alerts            ⌃⌥⌘ K
- Reload                  ⌃⌥⌘ R
- Hammerpsoon             ⌃⌥⌘ H
- This help               ⌃⌥⌘ +]]
+Chrome                  ⌃⌥⌘ Enter
+Slack                   ⌃⌥⌘ .
+iTerm2                  ⌃⌥⌘ @
+Code                    ⌃⌥⌘ P
+IntelliJ                ⌃⌥⌘ I
+Move to next screen     ⌃⌥⌘ L
+Working hard            ⌃⌥⌘ J
+Clear alerts            ⌃⌥⌘ K
+Reload                  ⌃⌥⌘ R
+Hammerpsoon             ⌃⌥⌘ H
+This help               ⌃⌥⌘ +]]
     alert(text, 20)
 end
 
