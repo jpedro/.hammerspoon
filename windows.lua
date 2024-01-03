@@ -84,8 +84,8 @@ function Refresh(win)
 
         -- 2nd third + origin
         f = {
-            -- x = screen.x + screen.w / 3 * 2 + gap,
-            x = screen.x + screen.w * 0.35 + gap,
+            x = screen.x + screen.w / 3 * 2 + gap,
+            -- x = screen.x + screen.w * 0.35 + gap,
             y = screen.y,
         },
 
