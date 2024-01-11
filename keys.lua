@@ -48,7 +48,7 @@ hs.hotkey.bind(hyper, "+",      ShowHelp)
 hs.hotkey.bind(hyper, "m",      CaffeineToggle)
 hs.hotkey.bind(hyper, "j",      CaffeineFlip)
 hs.hotkey.bind(hyper, "0",      CycleChromeProfiles)
--- hs.hotkey.bind(hyper, "z",      ShowSpaces)
+-- hs.hotkey.bind(hyper, "z",      CaffeineTest)
 
 hs.hotkey.bind(hyper, "return", ShowApp("Google Chrome"))
 hs.hotkey.bind(hyper, ".",      ShowApp("Slack"))

@@ -1,3 +1,7 @@
+function Alert(message, delay)
+    hs.alert.closeAll()
+    return hs.alert.show(message, delay)
+end
 
 function PrintTable(table, indent)
     local padding = string.rep("  ", indent)
@@ -9,6 +13,8 @@ function PrintTable(table, indent)
         elseif type(v) == "boolean" then
             v = (v and "true" or "false")
             print(padding .. "  Value: " .. v)
+        elseif type(v) == "function" then
+            print(padding .. "  Value: [function]")
         else
             print(padding .. "  Value: " .. v)
         end

@@ -80,6 +80,10 @@ function CaffeineToggle()
     end
 end
 
+function CaffeineTest()
+    menu:setTitle("Space currentSpace | Fan: fanSpeed | Temp: temp")
+end
+
 work = {
     {
         title = "●  Working hard",

@@ -1,21 +1,19 @@
-require "functions"
+require "util"
 require "settings"
 require "watch"
 require "mouse"
 require "windows"
 require "screens"
 require "caffeine"
+-- require "style"
 -- require "catcher"
+-- require "spaces"
 require "chrome"
 require "events"
--- require "spaces"
 require "keys"
-require "style"
-require "alert"
 
 CaffeineShow()
 
-Alert("Hammerspoon up and upping", 2)
+Alert("Hammerspoon up and running", 2)
 
--- local spaces = require("hs._asm.undocumented.spaces")
--- alert("Hammerspoon loaded (Space " .. spaces.activeSpace() .. ")", 1)
+hs.alert("Focused space: " .. hs.spaces.focusedSpace())

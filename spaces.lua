@@ -1,6 +1,10 @@
+-- hs.spaces.gotoSpace(spaceID)
+-- hs.spaces.focusedSpace()
+
+
 -- local spaces = require("hs_asm.undocumented.spaces")
-local spaces = require("hs._asm.undocumented.spaces")
-local currentId = spaces.activeSpace()
+-- local spaces = require("hs._asm.undocumented.spaces")
+local currentId = hs.spaces.activeSpace():spaceID()
 
 
 -- hs.hotkey.bind({"cmd", "shift"}, "7",      function()
@@ -11,7 +15,7 @@ local currentId = spaces.activeSpace()
 -- end)
 
 function ShowSpacesLayout()
-    local text = spaces.debug.layout()
+    local text = hs.spaces.debug.layout()
     print(text)
     hs.alert("Space currentId: " .. currentId)
     hs.alert("NextSpaceId: " .. NextSpace())
@@ -23,10 +27,10 @@ end
 --     alert("Move to space 1036")
 -- end)
 
-function CreateSpace()
-    local spaceId = spaces.createSpace()
-    Alert("Created space " .. spaceId)
-end
+-- function CreateSpace()
+--     local spaceId = hs.spaces.
+--     Alert("Created space " .. spaceId)
+-- end
 
 -- function gotoSpace(id)
 --     spaces.changeToSpace(id, false)
@@ -34,7 +38,7 @@ end
 -- end
 
 function NextSpace()
-    local thisID = spaces.activeSpace()
+    local thisID = hs.spaces.activeSpaces()
     local nextID = ShowSpaces()
     -- hs.alert.show("thisID " .. thisID .. " --> nextID " .. nextID)
 
@@ -43,8 +47,8 @@ function NextSpace()
     end
 
     print("--> spaces.nextSpace: " .. nextID)
-    local spacesIDArray = spaces.changeToSpace(nextID, false)
-    hs.alert.show("In space " .. spaces.activeSpace())
+    local spacesIDArray = hs.spaces.changeToSpace(nextID, false)
+    hs.alert.show("In space " .. hs.spaces.activeSpace())
     print("--> spacesIDArray:")
     print(spacesIDArray)
     print("--> thisID:" .. thisID)
@@ -60,7 +64,7 @@ end
 function ShowSpaces()
     local win      = hs.window.focusedWindow()
     local screenID = win:screen():spacesUUID()
-    local spaceID  = spaces.activeSpace()
+    local spaceID  = hs.spaces.activeSpace()
 
     print("")
     print("SCREEN: " .. screenID)
@@ -68,7 +72,7 @@ function ShowSpaces()
     local found   = false
     local firstId = 0
     local nextId  = 0
-    local layout  = spaces.layout()
+    local layout  = hs.spaces.layout()
     for id, screen in pairs(layout) do
         if id == screenID then
             print("-----------------")

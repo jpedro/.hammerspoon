@@ -1,4 +1,4 @@
-function SendToScreen(id)
+local function sendToScreen(id)
     hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[id], nil, true)
     Alert("Sent to screen: " .. id)
 end
@@ -15,14 +15,14 @@ function LoopScreens()
         local id = screens[k]:id()
         print("Screen " .. k .. " with id: " .. id)
         if found then
-            SendToScreen(k)
+            sendToScreen(k)
             return
         end
         if id == current then
             found = true
         end
     end
-    SendToScreen(1)
+    sendToScreen(1)
 end
 
 function ShowScreens()

@@ -45,14 +45,14 @@ function CycleChromeProfiles()
     PrintTable(menuWork, 0)
 
     if (menuHome and not menuHome["ticked"]) then
+        Alert("Home profile selected")
         app:selectMenuItem(itemHome)
-        hs.alert.show("Home profile selected")
         return
     end
 
     if (menuWork and not menuWork["ticked"]) then
+        Alert("Nordcloud profile selected")
         app:selectMenuItem(itemWork)
-        hs.alert.show("Nordcloud profile selected")
         return
     end
 end
