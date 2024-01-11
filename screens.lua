@@ -1,6 +1,6 @@
 function SendToScreen(id)
     hs.window.focusedWindow():moveToScreen(hs.screen.allScreens()[id], nil, true)
-    alert("Sent to screen: " .. id)
+    Alert("Sent to screen: " .. id)
 end
 
 function LoopScreens()
@@ -35,7 +35,7 @@ function ShowScreens()
     for id, value in pairs(screens) do
         local name = screens[id]:name() or "-"
         local uuid = screens[id]:getUUID() or "-"
-        local message = "  Screen " .. id .. ": " .. name -- .. "  " .. uuid
+        local message = "  Screen " .. id .. ": " .. name -- .. "\n" .. uuid
         hs.alert.show(message, screens[id], 20)
         hs.alert.show(uuid, screens[id], 20)
     end

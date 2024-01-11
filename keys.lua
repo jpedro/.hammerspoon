@@ -20,13 +20,20 @@ Clear alerts            ⌃⌥⌘ K
 Reload                  ⌃⌥⌘ R
 Hammerpsoon             ⌃⌥⌘ H
 This help               ⌃⌥⌘ +]]
-    alert(text, 20)
+    Alert(text, 20)
 end
 
-hs.hotkey.bind("cmd", "'",      MouseHighlight)
-hs.hotkey.bind("ctrl", "<",     MouseHighlight)
-hs.hotkey.bind("alt", ".",      MouseHighlight)
+-- function ShowSpaces()
+--     local allSpaces = hs.space.allSpaces()
+--     print(allSpaces)
+-- end
 
+-- hs.hotkey.bind("cmd", "'",      MouseHighlight)
+-- hs.hotkey.bind("alt", ".",      MouseHighlight)
+hs.hotkey.bind("ctrl", "<",     MouseHighlight)
+
+hs.hotkey.bind(hyper, "r",      hs.reload)
+hs.hotkey.bind(hyper, "k",      hs.alert.closeAll)
 hs.hotkey.bind(hyper, "space",  WindowMaximize)
 hs.hotkey.bind(hyper, "left",   WindowHalf)
 hs.hotkey.bind(hyper, "right",  WindowSixty)
@@ -38,10 +45,10 @@ hs.hotkey.bind(hyper, "s",      ShowScreens)
 hs.hotkey.bind(hyper, "l",      LoopScreens)
 hs.hotkey.bind(hyper, "x",      ShowStored)
 hs.hotkey.bind(hyper, "+",      ShowHelp)
-hs.hotkey.bind(hyper, "k",      hs.alert.closeAll)
-hs.hotkey.bind(hyper, "r",      hs.reload)
 hs.hotkey.bind(hyper, "m",      CaffeineMenuToggle)
 hs.hotkey.bind(hyper, "j",      CaffeineWorkToggle)
+hs.hotkey.bind(hyper, "0",      CycleChromeProfiles)
+-- hs.hotkey.bind(hyper, "z",      ShowSpaces)
 
 hs.hotkey.bind(hyper, "return", ShowApp("Google Chrome"))
 hs.hotkey.bind(hyper, ".",      ShowApp("Slack"))

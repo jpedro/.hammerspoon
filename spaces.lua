@@ -1,3 +1,4 @@
+-- local spaces = require("hs_asm.undocumented.spaces")
 local spaces = require("hs._asm.undocumented.spaces")
 local currentId = spaces.activeSpace()
 
@@ -12,7 +13,8 @@ local currentId = spaces.activeSpace()
 function ShowSpacesLayout()
     local text = spaces.debug.layout()
     print(text)
-    print("currentId: " .. currentId)
+    hs.alert("Space currentId: " .. currentId)
+    hs.alert("NextSpaceId: " .. NextSpace())
 end
 
 -- hs.hotkey.bind({"cmd", "shift"}, "9", function()
@@ -23,7 +25,7 @@ end
 
 function CreateSpace()
     local spaceId = spaces.createSpace()
-    alert("Created space " .. spaceId)
+    Alert("Created space " .. spaceId)
 end
 
 -- function gotoSpace(id)
@@ -46,6 +48,7 @@ function NextSpace()
     print("--> spacesIDArray:")
     print(spacesIDArray)
     print("--> thisID:" .. thisID)
+    return nextID
 end
 
 -- function moveToSpace(id)

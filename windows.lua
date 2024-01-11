@@ -32,7 +32,7 @@ local prevSizes    = {}
 local screens      = hs.screen.allScreens()
 local watcher      = hs.screen.watcher.new(function(x)
     print("Screen changed " .. x)
-    alert("Screen changed")
+    Alert("Screen changed")
     screens = hs.screen.allScreens()
     PrintTable(screens, 0)
 end)
@@ -174,7 +174,7 @@ function ShowStored()
             print("- " .. k .. ": NOT EXISTS")
         end
     end
-    alert(text)
+    Alert(text)
 end
 
 function CleanLoaded()
@@ -194,7 +194,7 @@ end
 function WindowMaximize()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     local windowId    = win:id()
@@ -282,7 +282,7 @@ end
 function ShowWindow()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     Refresh(win)
@@ -309,7 +309,7 @@ end
 function WindowHalf()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     Refresh(win)
@@ -332,7 +332,7 @@ end
 function WindowSixty()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     Refresh(win)
@@ -362,7 +362,7 @@ end
 function WindowThird()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     Refresh(win)
@@ -394,7 +394,7 @@ end
 function WindowHorizontally()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     Refresh(win)
@@ -418,7 +418,7 @@ end
 function WindowQuarter()
     local win = hs.window.focusedWindow()
     if win == nil then
-        return alert("Select a window first.", 1)
+        return Alert("Select a window first.", 1)
     end
 
     Refresh(win)

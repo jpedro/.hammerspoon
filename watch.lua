@@ -1,16 +1,17 @@
-local dir = os.getenv("HOME") .. "/.hammerspoon/"
-local watcher = hs.pathwatcher.new(dir, function(files)
-    local reload = false
+
+local function reloadConfig(files)
+    -- local reload = false
     for _, file in pairs(files) do
+        print("Found file " .. file)
         if file:sub(-4) == ".lua" then
-            reload = true
+            print("And we are reloading due to " .. file)
             hs.reload()
             return
         end
     end
-    if reload then
-        hs.reload()
-    end
-end)
+end
 
+local homeDir = os.getenv("HOME") .. "/.hammerspoon/"
+local watcher = hs.pathwatcher.new(homeDir, reloadConfig)
+-- local watcher = hs.pathwatcher.new(homeDir, hs.reload)
 watcher:start()
