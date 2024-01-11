@@ -1,22 +1,22 @@
-local caffeine = hs.menubar.new()
-local working  = {}
-local hardly   = {}
+local menu = hs.menubar.new()
+local work = {}
+local hard = {}
 
-function CaffeineWorkToggle()
+function CaffeineFlip()
     local enabled = hs.caffeinate.get("displayIdle")
     if enabled then
-        OnCaffeineHardly()
+        OnCaffeineHard()
     else
-        OnCaffeineWorking()
+        OnCaffeineWork()
     end
     print("--> caffeine:enabled: " .. tostring(enabled))
 end
 
-function OnCaffeineWorking()
+function OnCaffeineWork()
     hs.caffeinate.set("displayIdle", true)
     print("--> OnCaffeineWorking")
-    caffeine:setTitle("●  Working hard")
-    caffeine:setMenu(working)
+    menu:setTitle("●  Working hard")
+    menu:setMenu(work)
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.ico")
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.icns")
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/green-2.png")
@@ -33,12 +33,12 @@ function OnCaffeineWorking()
     print("--> caffeine:enabled: " .. tostring(enabled))
 end
 
-function OnCaffeineHardly()
+function OnCaffeineHard()
     -- setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
     print("--> OnCaffeineHardly")
     hs.caffeinate.set("displayIdle", false)
-    caffeine:setTitle("◯  Hardly working")
-    caffeine:setMenu(hardly)
+    menu:setTitle("◯  Hardly working")
+    menu:setMenu(hard)
 
     -- local icon = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
     -- icon = hs.image.imageFromPath("/Applications/Hammerspoon.app/Contents/Resources/statusicon.pdf")
@@ -56,22 +56,22 @@ end
 
 function CaffeineHide()
     print("--> caffeineHide")
-    caffeine:removeFromMenuBar()
+    menu:removeFromMenuBar()
 end
 
 function CaffeineQuit()
     print("--> CaffeineHide")
-    caffeine:delete()
+    menu:delete()
 end
 
 function CaffeineShow()
     print("--> CaffeineShow")
-    caffeine:returnToMenuBar()
-    OnCaffeineWorking()
+    menu:returnToMenuBar()
+    OnCaffeineWork()
 end
 
-function CaffeineMenuToggle()
-    local visible = caffeine:isInMenuBar()
+function CaffeineToggle()
+    local visible = menu:isInMenuBar()
     print("--> Caffeine:isInMenuBar: " .. tostring(visible))
     if visible then
         CaffeineHide()
@@ -80,7 +80,7 @@ function CaffeineMenuToggle()
     end
 end
 
-working = {
+work = {
     {
         title = "●  Working hard",
         checked = true,
@@ -89,7 +89,7 @@ working = {
     {
         title = "◯  Hardly working",
         checked = false,
-        fn = OnCaffeineHardly,
+        fn = OnCaffeineHard,
     },
     {
         title = "-"
@@ -107,11 +107,11 @@ working = {
     },
 }
 
-hardly = {
+hard = {
     {
         title = "● Working hard",
         checked = false,
-        fn = OnCaffeineWorking,
+        fn = OnCaffeineWork,
     },
     {
         title = "◯ Hardly working",
