@@ -1,18 +1,19 @@
 local menu = hs.menubar.new()
 local work = {}
 local hard = {}
+local icon = hs.image.imageFromPath("/Applications/Hammerspoon.app/Contents/Resources/statusicon.pdf")
 
-function CaffeineFlip()
+function WorkFlip()
     local enabled = hs.caffeinate.get("displayIdle")
     if enabled then
-        OnCaffeineHard()
+        OnHardly()
     else
-        OnCaffeineWork()
+        OnWorking()
     end
-    print("--> caffeine:enabled: " .. tostring(enabled))
+    print("--> work:enabled: " .. tostring(enabled))
 end
 
-function OnCaffeineWork()
+function OnWorking()
     hs.caffeinate.set("displayIdle", true)
     print("--> OnCaffeineWorking")
     menu:setTitle("●  Working hard")
@@ -31,56 +32,59 @@ function OnCaffeineWork()
 
     local enabled = hs.caffeinate.get("displayIdle")
     print("--> caffeine:enabled: " .. tostring(enabled))
+    hs.alert.closeAll()
 end
 
-function OnCaffeineHard()
+function OnHardly()
     -- setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
-    print("--> OnCaffeineHardly")
+    print("--> OnHardly")
     hs.caffeinate.set("displayIdle", false)
     menu:setTitle("◯  Hardly working")
     menu:setMenu(hard)
 
     -- local icon = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
-    -- icon = hs.image.imageFromPath("/Applications/Hammerspoon.app/Contents/Resources/statusicon.pdf")
-    -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-red.ico")
+    -- local icon = hs.image.imageFromPath("/Users/pedro/.hammerspoon/green.png")
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-red.icns")
     -- local icon = hs.image.imageFromName("UserGuest")
     -- local icon = hs.image.imageFromName(hs.image.systemImageNames["Network"])
-    -- icon:setSize({h = 12, w = 12})
-    -- caffeine:setIcon(icon)
-    -- print(icon)
+    -- icon:setSize({h = 19, w = 15})
+    -- menu:setIcon(icon)
+    -- menu:setIcon("/Users/pedro/.hammerspoon/green.png")
+    print(icon)
 
     local enabled = hs.caffeinate.get("displayIdle")
     print("--> caffeine:enabled: " .. tostring(enabled))
+    Alert("You are hardly working...")
 end
 
-function CaffeineHide()
-    print("--> caffeineHide")
+function WorkHide()
+    print("--> WorkHide")
     menu:removeFromMenuBar()
 end
 
-function CaffeineQuit()
-    print("--> CaffeineHide")
+function WorkQuit()
+    print("--> WorkQuit")
     menu:delete()
 end
 
-function CaffeineShow()
-    print("--> CaffeineShow")
+function WorkShow()
+    print("--> WorkShow")
     menu:returnToMenuBar()
-    OnCaffeineWork()
+    OnWorking()
 end
 
-function CaffeineToggle()
+function WorkToggle()
     local visible = menu:isInMenuBar()
-    print("--> Caffeine:isInMenuBar: " .. tostring(visible))
+    print("--> WorkShow:isInMenuBar: " .. tostring(visible))
     if visible then
-        CaffeineHide()
+        WorkHide()
     else
-        CaffeineShow()
+        WorkShow()
     end
 end
 
-function CaffeineTest()
+function WorkTest()
+    menu:setIcon(icon)
     menu:setTitle("Space currentSpace | Fan: fanSpeed | Temp: temp")
 end
 
@@ -89,25 +93,31 @@ work = {
         title = "●  Working hard",
         checked = true,
         disabled = true,
+        -- image = icon,
     },
     {
         title = "◯  Hardly working",
         checked = false,
-        fn = OnCaffeineHard,
+        fn = OnHardly,
     },
     {
         title = "-"
     },
     {
         title = "Hide",
-        fn = CaffeineHide,
+        fn = WorkHide,
+    },
+    {
+        title = "Reload",
+        -- image = icon,
+        fn = hs.reload
     },
     {
         title = "-",
     },
     {
         title = "Quit",
-        fn = CaffeineQuit,
+        fn = WorkQuit,
     },
 }
 
@@ -115,7 +125,7 @@ hard = {
     {
         title = "● Working hard",
         checked = false,
-        fn = OnCaffeineWork,
+        fn = OnWorking,
     },
     {
         title = "◯ Hardly working",
@@ -127,13 +137,18 @@ hard = {
     },
     {
         title = "Hide",
-        fn = CaffeineHide
+        fn = WorkHide
+    },
+    {
+        title = "Reload",
+        -- image = icon,
+        fn = hs.reload
     },
     {
         title = "-"
     },
     {
         title = "Quit",
-        fn = CaffeineQuit
+        fn = WorkQuit
     },
 }

@@ -4,7 +4,7 @@ require "watch"
 require "mouse"
 require "windows"
 require "screens"
-require "caffeine"
+require "work"
 -- require "style"
 -- require "catcher"
 -- require "spaces"
@@ -12,7 +12,7 @@ require "chrome"
 require "events"
 require "keys"
 
-CaffeineShow()
+WorkShow()
 
 Alert("Hammerspoon up and running", 2)
 

@@ -10,7 +10,7 @@ hs.urlevent.bind("working", function(name, params)
     print("Event params:")
     PrintTable(params, 0)
     local enabled = params["enabled"]
-    CaffeineFlip()
+    WorkFlip()
     if enabled == "true" then
         print("--> Enabled")
     else
