@@ -28,8 +28,8 @@ end
 --     print(allSpaces)
 -- end
 
--- hs.hotkey.bind("cmd", "'",      MouseHighlight)
--- hs.hotkey.bind("alt", ".",      MouseHighlight)
+hs.hotkey.bind("cmd", "'",      MouseHighlight)
+hs.hotkey.bind("alt", ".",      MouseHighlight)
 hs.hotkey.bind("ctrl", "<",     MouseHighlight)
 
 hs.hotkey.bind(hyper, "r",      hs.reload)
