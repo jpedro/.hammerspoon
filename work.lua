@@ -2,7 +2,22 @@ local menu = hs.menubar.new()
 local work = {}
 local hard = {}
 local icon = hs.image.imageFromPath("/Applications/Hammerspoon.app/Contents/Resources/statusicon.pdf")
-
+local iconAscii = [[ASCII:
+............
+............
+....AD......
+..F.....PQ..
+..I.........
+..........G.
+..........H.
+.K..........
+.N..........
+.........L..
+..BC.....M..
+......SR....
+............
+............
+]]
 function WorkFlip()
     local enabled = hs.caffeinate.get("displayIdle")
     if enabled then
@@ -17,6 +32,7 @@ function OnWorking()
     hs.caffeinate.set("displayIdle", true)
     print("--> OnCaffeineWorking")
     menu:setTitle("●  Working hard")
+    -- menu:setTitle(" Working hard")
     menu:setMenu(work)
     -- local icon = hs.image.imageFromPath("/Users/pedro/.hammerspoon/green@2x.png")
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/Custom-Icon-Design-Flatastic-10-Trafficlight-green.icns")
@@ -27,9 +43,10 @@ function OnWorking()
     -- -- icon:setSize(16)
     -- -- icon:setSize({h = 6, w = 6})
     -- local icon = hs.image.imageFromPath("/Users/pedro/Desktop/circle-8.png")
-    local icon2 = hs.image.imageFromPath("/Users/pedro/.hammerspoon/green@2x.png")
-    menu:setIcon(icon2)
-    print(icon2)
+    -- local icon2 = hs.image.imageFromPath("/Users/pedro/.hammerspoon/green@2x.png")
+    -- local icon2 = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/green@2x.png")
+    -- menu:setIcon(iconAscii)
+    -- print(icon2, type(icon2), menu:icon())
 
     local enabled = hs.caffeinate.get("displayIdle")
     print("--> caffeine:enabled: " .. tostring(enabled))
@@ -41,6 +58,7 @@ function OnHardly()
     print("--> OnHardly")
     hs.caffeinate.set("displayIdle", false)
     menu:setTitle("◯  Hardly working")
+    -- menu:setTitle(" Hardly working")
     menu:setMenu(hard)
 
     -- local icon = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
@@ -51,11 +69,15 @@ function OnHardly()
     -- icon:setSize({h = 19, w = 15})
     -- menu:setIcon(icon)
     -- menu:setIcon("/Users/pedro/.hammerspoon/green.png")
-    print(icon)
+    -- print(icon)
+    -- local icon2 = hs.image.imageFromPath("/Users/pedro/.hammerspoon/orange@2x.png")
+    -- local icon2 = hs.image.imageFromPath("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
+    -- menu:setIcon("/Applications/AnyBar.app/Contents/Resources/red@2x.png")
+    -- print(icon2, type(icon2), menu:icon())
 
     local enabled = hs.caffeinate.get("displayIdle")
     print("--> caffeine:enabled: " .. tostring(enabled))
-    Alert("You are hardly working...")
+    -- Alert(" You are hardly working... ")
 end
 
 function WorkHide()
